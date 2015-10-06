@@ -1,0 +1,404 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2FE2D93A1BC417480040229E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE2D9391BC417480040229E /* AppDelegate.swift */; };
+		2FE2D93C1BC417480040229E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE2D93B1BC417480040229E /* ViewController.swift */; };
+		2FE2D93F1BC417480040229E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FE2D93D1BC417480040229E /* Main.storyboard */; };
+		2FE2D9411BC417480040229E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FE2D9401BC417480040229E /* Assets.xcassets */; };
+		2FE2D9441BC417480040229E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FE2D9421BC417480040229E /* LaunchScreen.storyboard */; };
+		2FE2D94F1BC417480040229E /* AEDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE2D94E1BC417480040229E /* AEDTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2FE2D94B1BC417480040229E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2FE2D92E1BC417480040229E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2FE2D9351BC417480040229E;
+			remoteInfo = AED;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2FE2D9361BC417480040229E /* AED.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AED.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FE2D9391BC417480040229E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2FE2D93B1BC417480040229E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2FE2D93E1BC417480040229E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2FE2D9401BC417480040229E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2FE2D9431BC417480040229E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2FE2D9451BC417480040229E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FE2D94A1BC417480040229E /* AEDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AEDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FE2D94E1BC417480040229E /* AEDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEDTests.swift; sourceTree = "<group>"; };
+		2FE2D9501BC417480040229E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2FE2D9331BC417480040229E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FE2D9471BC417480040229E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2FE2D92D1BC417480040229E = {
+			isa = PBXGroup;
+			children = (
+				2FE2D9381BC417480040229E /* AED */,
+				2FE2D94D1BC417480040229E /* AEDTests */,
+				2FE2D9371BC417480040229E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2FE2D9371BC417480040229E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2FE2D9361BC417480040229E /* AED.app */,
+				2FE2D94A1BC417480040229E /* AEDTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2FE2D9381BC417480040229E /* AED */ = {
+			isa = PBXGroup;
+			children = (
+				2FE2D9391BC417480040229E /* AppDelegate.swift */,
+				2FE2D93B1BC417480040229E /* ViewController.swift */,
+				2FE2D93D1BC417480040229E /* Main.storyboard */,
+				2FE2D9401BC417480040229E /* Assets.xcassets */,
+				2FE2D9421BC417480040229E /* LaunchScreen.storyboard */,
+				2FE2D9451BC417480040229E /* Info.plist */,
+			);
+			path = AED;
+			sourceTree = "<group>";
+		};
+		2FE2D94D1BC417480040229E /* AEDTests */ = {
+			isa = PBXGroup;
+			children = (
+				2FE2D94E1BC417480040229E /* AEDTests.swift */,
+				2FE2D9501BC417480040229E /* Info.plist */,
+			);
+			path = AEDTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2FE2D9351BC417480040229E /* AED */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FE2D9531BC417480040229E /* Build configuration list for PBXNativeTarget "AED" */;
+			buildPhases = (
+				2FE2D9321BC417480040229E /* Sources */,
+				2FE2D9331BC417480040229E /* Frameworks */,
+				2FE2D9341BC417480040229E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AED;
+			productName = AED;
+			productReference = 2FE2D9361BC417480040229E /* AED.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2FE2D9491BC417480040229E /* AEDTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FE2D9561BC417480040229E /* Build configuration list for PBXNativeTarget "AEDTests" */;
+			buildPhases = (
+				2FE2D9461BC417480040229E /* Sources */,
+				2FE2D9471BC417480040229E /* Frameworks */,
+				2FE2D9481BC417480040229E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2FE2D94C1BC417480040229E /* PBXTargetDependency */,
+			);
+			name = AEDTests;
+			productName = AEDTests;
+			productReference = 2FE2D94A1BC417480040229E /* AEDTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2FE2D92E1BC417480040229E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = iTO;
+				TargetAttributes = {
+					2FE2D9351BC417480040229E = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 5B9JTAF58B;
+					};
+					2FE2D9491BC417480040229E = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 5B9JTAF58B;
+						TestTargetID = 2FE2D9351BC417480040229E;
+					};
+				};
+			};
+			buildConfigurationList = 2FE2D9311BC417480040229E /* Build configuration list for PBXProject "AED" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2FE2D92D1BC417480040229E;
+			productRefGroup = 2FE2D9371BC417480040229E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2FE2D9351BC417480040229E /* AED */,
+				2FE2D9491BC417480040229E /* AEDTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2FE2D9341BC417480040229E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FE2D9441BC417480040229E /* LaunchScreen.storyboard in Resources */,
+				2FE2D9411BC417480040229E /* Assets.xcassets in Resources */,
+				2FE2D93F1BC417480040229E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FE2D9481BC417480040229E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2FE2D9321BC417480040229E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FE2D93C1BC417480040229E /* ViewController.swift in Sources */,
+				2FE2D93A1BC417480040229E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FE2D9461BC417480040229E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FE2D94F1BC417480040229E /* AEDTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2FE2D94C1BC417480040229E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2FE2D9351BC417480040229E /* AED */;
+			targetProxy = 2FE2D94B1BC417480040229E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2FE2D93D1BC417480040229E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2FE2D93E1BC417480040229E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2FE2D9421BC417480040229E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2FE2D9431BC417480040229E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2FE2D9511BC417480040229E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2FE2D9521BC417480040229E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2FE2D9541BC417480040229E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = AED/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.ito.AED;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2FE2D9551BC417480040229E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = AED/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.ito.AED;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2FE2D9571BC417480040229E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AEDTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.ito.AEDTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AED.app/AED";
+			};
+			name = Debug;
+		};
+		2FE2D9581BC417480040229E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AEDTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.ito.AEDTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AED.app/AED";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2FE2D9311BC417480040229E /* Build configuration list for PBXProject "AED" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FE2D9511BC417480040229E /* Debug */,
+				2FE2D9521BC417480040229E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2FE2D9531BC417480040229E /* Build configuration list for PBXNativeTarget "AED" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FE2D9541BC417480040229E /* Debug */,
+				2FE2D9551BC417480040229E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2FE2D9561BC417480040229E /* Build configuration list for PBXNativeTarget "AEDTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FE2D9571BC417480040229E /* Debug */,
+				2FE2D9581BC417480040229E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2FE2D92E1BC417480040229E /* Project object */;
+}
