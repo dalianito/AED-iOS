@@ -22,9 +22,11 @@
 		2FE2D9411BC417480040229E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FE2D9401BC417480040229E /* Assets.xcassets */; };
 		2FE2D9441BC417480040229E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FE2D9421BC417480040229E /* LaunchScreen.storyboard */; };
 		2FE2D94F1BC417480040229E /* AEDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE2D94E1BC417480040229E /* AEDTests.swift */; };
+		2FE508181BC80C0700020239 /* initAEDData.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FE508171BC80C0700020239 /* initAEDData.json */; settings = {ASSET_TAGS = (); }; };
 		2FF112721BC7A09A00E3449F /* BaseDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF112711BC7A09A00E3449F /* BaseDAO.swift */; settings = {ASSET_TAGS = (); }; };
 		2FF112741BC7A4E900E3449F /* BuildingDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF112731BC7A4E900E3449F /* BuildingDAO.swift */; settings = {ASSET_TAGS = (); }; };
 		2FF112761BC7FD3C00E3449F /* AEDDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF112751BC7FD3C00E3449F /* AEDDAO.swift */; settings = {ASSET_TAGS = (); }; };
+		2FF112791BC8097C00E3449F /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF112781BC8097C00E3449F /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,9 +59,11 @@
 		2FE2D94A1BC417480040229E /* AEDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AEDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FE2D94E1BC417480040229E /* AEDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEDTests.swift; sourceTree = "<group>"; };
 		2FE2D9501BC417480040229E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FE508171BC80C0700020239 /* initAEDData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = initAEDData.json; sourceTree = "<group>"; };
 		2FF112711BC7A09A00E3449F /* BaseDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDAO.swift; sourceTree = "<group>"; };
 		2FF112731BC7A4E900E3449F /* BuildingDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingDAO.swift; sourceTree = "<group>"; };
 		2FF112751BC7FD3C00E3449F /* AEDDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AEDDAO.swift; sourceTree = "<group>"; };
+		2FF112781BC8097C00E3449F /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,10 +126,12 @@
 		2FE2D9381BC417480040229E /* AED */ = {
 			isa = PBXGroup;
 			children = (
+				2FF112771BC8096600E3449F /* lib */,
 				2FF112701BC7A08800E3449F /* DAO */,
 				2FAB55A21BC793AA0048F028 /* Model */,
 				2FAB559D1BC78F3C0048F028 /* CoreData */,
 				2FACBCFA1BC639C3005F5FD4 /* AEDTableViewController.swift */,
+				2FE508171BC80C0700020239 /* initAEDData.json */,
 				2FACBD001BC6424C005F5FD4 /* AEDInfoTableViewCell.swift */,
 				2FE2D9391BC417480040229E /* AppDelegate.swift */,
 				2FE2D93B1BC417480040229E /* ViewController.swift */,
@@ -154,6 +160,14 @@
 				2FF112751BC7FD3C00E3449F /* AEDDAO.swift */,
 			);
 			name = DAO;
+			sourceTree = "<group>";
+		};
+		2FF112771BC8096600E3449F /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				2FF112781BC8097C00E3449F /* SwiftyJSON.swift */,
+			);
+			name = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FE2D9441BC417480040229E /* LaunchScreen.storyboard in Resources */,
+				2FE508181BC80C0700020239 /* initAEDData.json in Resources */,
 				2FE2D9411BC417480040229E /* Assets.xcassets in Resources */,
 				2FE2D93F1BC417480040229E /* Main.storyboard in Resources */,
 			);
@@ -261,6 +276,7 @@
 				2FAB55A01BC78F940048F028 /* AEDMO+CoreDataProperties.swift in Sources */,
 				2FACBD011BC6424C005F5FD4 /* AEDInfoTableViewCell.swift in Sources */,
 				2FF112741BC7A4E900E3449F /* BuildingDAO.swift in Sources */,
+				2FF112791BC8097C00E3449F /* SwiftyJSON.swift in Sources */,
 				2FAB55A11BC78F940048F028 /* AEDMO.swift in Sources */,
 				2FAB559C1BC78F070048F028 /* BuildingMO.swift in Sources */,
 				2FF112761BC7FD3C00E3449F /* AEDDAO.swift in Sources */,

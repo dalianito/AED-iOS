@@ -1,0 +1,73 @@
+{
+    "building":[
+              {
+                "name": "国际会议中心",
+                "aeds": [
+                         {
+                            "floor": "一楼",
+                            "specificLocation": "大厅N门正对电梯旁"
+                         },
+                         {
+                         "floor": "一楼",
+                         "specificLocation": "大堂S门正对安全通道旁"
+                         },
+                         {
+                         "floor": "二楼",
+                         "specificLocation": "剧院化妆通道出电梯右手边洗手间门口"
+                         },
+                         {
+                         "floor": "三楼",
+                         "specificLocation": "F308对面"
+                         },
+                         {
+                         "floor": "三楼",
+                         "specificLocation": "采访间1主扶梯上楼右手边洗手间前"
+                         },
+                         {
+                         "floor": "六楼",
+                         "specificLocation": "会议中心双边洽谈室外活动区域"
+                         }
+                ]
+              },
+              {
+                "name": "香格里拉酒店",
+                "aeds": [
+                         {
+                         "floor": "一楼",
+                         "specificLocation": "大堂进门左手边礼宾部左侧内部"
+                         },
+                         {
+                         "floor": "二楼",
+                         "specificLocation": "剧院化妆通道出电梯右手边洗手间门口"
+                         },
+                         {
+                         "floor": "三楼",
+                         "specificLocation": "贵宾厅旁"
+                         },
+                         {
+                         "floor": "四楼",
+                         "specificLocation": "健体中心"
+                         },
+                         {
+                         "floor": "二十五楼",
+                         "specificLocation": "豪华阁外走廊"
+                         }
+                         ]
+
+              },
+                {
+                "name": "万达希尔顿酒店",
+                "aeds": [
+                         {
+                         "floor": "一楼",
+                         "specificLocation": "万达希尔顿酒店前台"
+                         },
+                         {
+                         "floor": "一楼",
+                         "specificLocation": "康莱德酒店前台"
+                         }
+                         ]
+                
+                },
+              ]
+}
