@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
+    <entity name="AED" representedClassName="AED.AEDMO" syncable="YES">
+        <attribute name="directionToFind" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="floor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="specificLocation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="syncVersionNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="building" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Building" inverseName="aeds" inverseEntity="Building" syncable="YES"/>
+    </entity>
+    <entity name="Building" representedClassName="AED.BuildingMO" syncable="YES">
+        <attribute name="address" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="phone" attributeType="String" syncable="YES"/>
+        <attribute name="syncVersionNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="aeds" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="AED" inverseName="building" inverseEntity="AED" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AED" positionX="216" positionY="18" width="128" height="120"/>
+        <element name="Building" positionX="-36" positionY="9" width="128" height="118"/>
+    </elements>
+</model>
