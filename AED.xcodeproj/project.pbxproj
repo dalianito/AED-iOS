@@ -27,6 +27,7 @@
 		2FF112741BC7A4E900E3449F /* BuildingDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF112731BC7A4E900E3449F /* BuildingDAO.swift */; settings = {ASSET_TAGS = (); }; };
 		2FF112761BC7FD3C00E3449F /* AEDDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF112751BC7FD3C00E3449F /* AEDDAO.swift */; settings = {ASSET_TAGS = (); }; };
 		2FF112791BC8097C00E3449F /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF112781BC8097C00E3449F /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
+		CDB897EE4179DCED29C2481F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1161BB2CB3339ECB675C07 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,9 @@
 		2FF112731BC7A4E900E3449F /* BuildingDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingDAO.swift; sourceTree = "<group>"; };
 		2FF112751BC7FD3C00E3449F /* AEDDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AEDDAO.swift; sourceTree = "<group>"; };
 		2FF112781BC8097C00E3449F /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		36AB75E6A26A0EBF2A1A5F2C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		52DE1A7F664968EE8AB9F031 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		9B1161BB2CB3339ECB675C07 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDB897EE4179DCED29C2481F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +89,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A1F0917EEFD4CC16CE99D7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B1161BB2CB3339ECB675C07 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2FAB559D1BC78F3C0048F028 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +124,8 @@
 				2FE2D9381BC417480040229E /* AED */,
 				2FE2D94D1BC417480040229E /* AEDTests */,
 				2FE2D9371BC417480040229E /* Products */,
+				E3765115E26373A0FE3A4D9A /* Pods */,
+				0A1F0917EEFD4CC16CE99D7B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,6 +185,15 @@
 			name = lib;
 			sourceTree = "<group>";
 		};
+		E3765115E26373A0FE3A4D9A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				52DE1A7F664968EE8AB9F031 /* Pods.debug.xcconfig */,
+				36AB75E6A26A0EBF2A1A5F2C /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -177,9 +201,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2FE2D9531BC417480040229E /* Build configuration list for PBXNativeTarget "AED" */;
 			buildPhases = (
+				CE1CFCCDAB38B31D99B2130B /* Check Pods Manifest.lock */,
 				2FE2D9321BC417480040229E /* Sources */,
 				2FE2D9331BC417480040229E /* Frameworks */,
 				2FE2D9341BC417480040229E /* Resources */,
+				CC1E0304AA2233219A6E8F53 /* Embed Pods Frameworks */,
+				76BC25F2817C6859FE047A8E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -267,6 +294,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		76BC25F2817C6859FE047A8E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC1E0304AA2233219A6E8F53 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE1CFCCDAB38B31D99B2130B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2FE2D9321BC417480040229E /* Sources */ = {
@@ -414,6 +489,7 @@
 		};
 		2FE2D9541BC417480040229E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52DE1A7F664968EE8AB9F031 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = AED/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -426,6 +502,7 @@
 		};
 		2FE2D9551BC417480040229E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36AB75E6A26A0EBF2A1A5F2C /* Pods.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = AED/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
