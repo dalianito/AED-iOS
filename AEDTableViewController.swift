@@ -9,21 +9,27 @@
 import UIKit
 import CoreData
 
-class AEDTableViewController: UITableViewController {
+class AEDTableViewController: UITableViewController, MAMapViewDelegate, AMapCloudDelegate {
     
     // Mark: Properties
     var availableBuildings = [BuildingModel]()
+    var cloudAPI: AMapCloudAPI?
+    var mapView: MAMapView?
+    var userLastLocationCoordinate2D: CLLocationCoordinate2D?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        initMapView()
+        initAMapCloudAPI()
 
-        let request = NSFetchRequest()
-        availableBuildings = BuildingDAO.sharedDAO.selectByFetchRequest(request)
-
+        //let request = NSFetchRequest()
+        //availableBuildings = BuildingDAO.sharedDAO.selectByFetchRequest(request)
+        self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
     }
 
 
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -53,6 +59,99 @@ class AEDTableViewController: UITableViewController {
         cell.setView()
         
         return cell
+    }
+    
+    func handleRefresh(refreshControl: UIRefreshControl?) {
+        refreshAEDList()
+    }
+    
+    func refreshAEDList() {
+        print("Refreshing AED list with coordinate \(userLastLocationCoordinate2D)")
+        
+        let radius =  5000 // 2 KM
+        let centerPoint =  AMapCloudPoint.locationWithLatitude(CGFloat(Double((userLastLocationCoordinate2D?.latitude)!)), longitude: CGFloat(Double((userLastLocationCoordinate2D?.longitude)!)))
+        
+        let placeAroundRequest =  AMapCloudPlaceAroundSearchRequest()
+        placeAroundRequest.tableID = ConfigurationConstants.AMAP_CLOUD_MAP_TABLE_ID
+        placeAroundRequest.radius = radius
+        placeAroundRequest.center = centerPoint
+        placeAroundRequest.keywords = ""
+        placeAroundRequest.offset = 20
+        
+        self.cloudAPI!.AMapCloudPlaceAroundSearch(placeAroundRequest)
+    }
+    
+    func updateAvailableBuildings(pois: [AMapCloudPOI]) {
+        availableBuildings = [BuildingModel]()
+        for poi in pois {
+            let building = BuildingModel()
+            building.name = poi.name
+            building.address = poi.address
+            
+            
+            let customFields = poi.customFields
+            let aed = AEDModel()
+            aed.floor = customFields["floor"] as? String
+            aed.specificLocation = customFields["location"] as? String
+            aed.directionToFind = customFields["directionToFind"] as? String
+            aed.building = building
+            building.aeds.append(aed)
+            
+            availableBuildings.append(building)
+        }
+        
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
+    }
+    
+    // MARK: - AMap
+    func initMapView() {
+        MAMapServices.sharedServices().apiKey = ConfigurationConstants.AMAP_CLOUD_MAP_API_KEY
+        mapView = MAMapView(frame: self.view.bounds)
+        mapView?.showsUserLocation = true
+        mapView!.delegate = self
+    }
+    
+    func initAMapCloudAPI(){
+        self.cloudAPI = AMapCloudAPI(cloudKey:ConfigurationConstants.AMAP_CLOUD_MAP_API_KEY, delegate:nil)
+        self.cloudAPI?.delegate = self;
+    }
+    
+    func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
+        
+        if updatingLocation && isNewCoordinate(userLocation.coordinate) {
+            refreshAEDList()
+        }
+    }
+    
+    func isNewCoordinate(coordinate: CLLocationCoordinate2D?) -> Bool {
+        if coordinate == nil {
+            return false
+        }
+        
+        if userLastLocationCoordinate2D == nil {
+            userLastLocationCoordinate2D = coordinate
+            return true
+        }
+        
+        if userLastLocationCoordinate2D?.latitude != coordinate!.latitude || userLastLocationCoordinate2D?.longitude != coordinate!.longitude {
+            userLastLocationCoordinate2D = coordinate
+            return true
+        }
+        
+        return false
+    }
+    
+    
+    func onCloudPlaceAroundSearchDone(request:AMapCloudPlaceAroundSearchRequest, response:AMapCloudSearchResponse)
+    {
+        print("hello world")
+        print(response.count)
+        updateAvailableBuildings(response.POIs as! [AMapCloudPOI])
+    }
+    
+    func cloudRequest(cloudSearchRequest: AnyObject!, error: NSError!) {
+        print("ERROR while sending cloud request")
     }
 
 

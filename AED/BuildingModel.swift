@@ -14,6 +14,7 @@ class BuildingModel {
     var name : String!
     var phone : String!
     var address : String!
+    var distance : Float!
     var aeds = [AEDModel]()
     
     // Mark: Initialization

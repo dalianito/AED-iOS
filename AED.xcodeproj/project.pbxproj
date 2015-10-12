@@ -253,6 +253,11 @@
 					2FE2D9351BC417480040229E = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 5B9JTAF58B;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					2FE2D9491BC417480040229E = {
 						CreatedOnToolsVersion = 7.0.1;

@@ -8,14 +8,22 @@
 
 import UIKit
 
-class TestAMapViewController: UIViewController, AMapCloudDelegate {
+class TestAMapViewController: UIViewController, MAMapViewDelegate, AMapCloudDelegate {
 
     var cloudAPI : AMapCloudAPI?
-
+    var mapView: MAMapView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        initMapView()
+        
+        mapView?.showsUserLocation = true
+        mapView?.setUserTrackingMode(MAUserTrackingMode.Follow, animated: true)
+        mapView?.showsScale = true
+        
+        
+        
         let placeAround =  AMapCloudPlaceAroundSearchRequest()
         placeAround.tableID = ConfigurationConstants.AMAP_CLOUD_MAP_TABLE_ID
         let radius =  5000
@@ -30,7 +38,24 @@ class TestAMapViewController: UIViewController, AMapCloudDelegate {
         self.cloudAPI?.delegate = self;
         self.cloudAPI!.AMapCloudPlaceAroundSearch(placeAround)
         
+        
+        
     }
+    func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
+        print("hello")
+        print(updatingLocation)
+        print(userLocation.coordinate.longitude)
+        print(userLocation.coordinate.latitude)
+    }
+    func initMapView() {
+        MAMapServices.sharedServices().apiKey = ConfigurationConstants.AMAP_CLOUD_MAP_API_KEY
+        mapView = MAMapView(frame: self.view.bounds)
+        mapView!.delegate = self
+        self.view.addSubview(mapView!)
+        self.view.sendSubviewToBack(mapView!)
+    }
+    
+
     
     func onCloudPlaceAroundSearchDone(request:AMapCloudPlaceAroundSearchRequest, response:AMapCloudSearchResponse)
     {
