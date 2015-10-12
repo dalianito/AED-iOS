@@ -16,7 +16,7 @@ class AEDTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+
 
         let request = NSFetchRequest()
         availableBuildings = BuildingDAO.sharedDAO.selectByFetchRequest(request)
