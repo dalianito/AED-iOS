@@ -42,8 +42,13 @@ class AEDTableViewController: UITableViewController, MAMapViewDelegate, AMapClou
         return availableBuildings.count
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return availableBuildings[section].name
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let  headerCell = tableView.dequeueReusableCellWithIdentifier("SectionHeaderCell") as! BuildingTableViewSectionCell
+        let building = availableBuildings[section]
+        headerCell.buildingNameLabel.text = "\(building.name)"
+        headerCell.distanceLabel.text = "\(building.distance)米"
+        
+        return headerCell
     }
     
     // MARK: - Table view data source for cell
@@ -87,6 +92,7 @@ class AEDTableViewController: UITableViewController, MAMapViewDelegate, AMapClou
             let building = BuildingModel()
             building.name = poi.name
             building.address = poi.address
+            building.distance = poi.distance
             
             
             let customFields = poi.customFields

@@ -1,5 +1,5 @@
 //
-//  TestAMapViewController.swift
+//  BuildingLocationsMapViewController.swift
 //  AED
 //
 //  Created by Yang Yu on 10/12/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TestAMapViewController: UIViewController, MAMapViewDelegate, AMapCloudDelegate {
+class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, AMapCloudDelegate {
 
     var cloudAPI : AMapCloudAPI?
     var mapView: MAMapView?

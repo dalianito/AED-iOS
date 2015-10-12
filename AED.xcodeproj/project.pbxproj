@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2F3EF6B81BCB83E900754820 /* ConfigurationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EF6B71BCB83E900754820 /* ConfigurationConstants.swift */; settings = {ASSET_TAGS = (); }; };
-		2F3EF6BA1BCB859F00754820 /* TestAMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EF6B91BCB859F00754820 /* TestAMapViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		2F3EF6BA1BCB859F00754820 /* BuildingLocationsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EF6B91BCB859F00754820 /* BuildingLocationsMapViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		2F3EF6BD1BCBCA1900754820 /* BuildingTableViewSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EF6BB1BCBCA1900754820 /* BuildingTableViewSectionCell.swift */; settings = {ASSET_TAGS = (); }; };
 		2FAB558C1BC7744D0048F028 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB558A1BC7744D0048F028 /* Model.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		2FAB559B1BC78F070048F028 /* BuildingMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB55991BC78F070048F028 /* BuildingMO+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		2FAB559C1BC78F070048F028 /* BuildingMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB559A1BC78F070048F028 /* BuildingMO.swift */; settings = {ASSET_TAGS = (); }; };
@@ -44,7 +45,8 @@
 
 /* Begin PBXFileReference section */
 		2F3EF6B71BCB83E900754820 /* ConfigurationConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationConstants.swift; sourceTree = "<group>"; };
-		2F3EF6B91BCB859F00754820 /* TestAMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAMapViewController.swift; sourceTree = "<group>"; };
+		2F3EF6B91BCB859F00754820 /* BuildingLocationsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingLocationsMapViewController.swift; sourceTree = "<group>"; };
+		2F3EF6BB1BCBCA1900754820 /* BuildingTableViewSectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingTableViewSectionCell.swift; sourceTree = "<group>"; };
 		2FAB558B1BC7744D0048F028 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		2FAB55991BC78F070048F028 /* BuildingMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BuildingMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2FAB559A1BC78F070048F028 /* BuildingMO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingMO.swift; sourceTree = "<group>"; };
@@ -150,12 +152,13 @@
 				2FAB55A21BC793AA0048F028 /* Model */,
 				2FAB559D1BC78F3C0048F028 /* CoreData */,
 				2FACBCFA1BC639C3005F5FD4 /* AEDTableViewController.swift */,
+				2F3EF6BB1BCBCA1900754820 /* BuildingTableViewSectionCell.swift */,
 				2FE508171BC80C0700020239 /* initAEDData.json */,
 				2FACBD001BC6424C005F5FD4 /* AEDInfoTableViewCell.swift */,
 				2FE2D9391BC417480040229E /* AppDelegate.swift */,
 				2FE2D93B1BC417480040229E /* ViewController.swift */,
 				2FE2D93D1BC417480040229E /* Main.storyboard */,
-				2F3EF6B91BCB859F00754820 /* TestAMapViewController.swift */,
+				2F3EF6B91BCB859F00754820 /* BuildingLocationsMapViewController.swift */,
 				2FE2D9401BC417480040229E /* Assets.xcassets */,
 				2FE2D9421BC417480040229E /* LaunchScreen.storyboard */,
 				2FE2D9451BC417480040229E /* Info.plist */,
@@ -366,7 +369,7 @@
 				2FAB55A11BC78F940048F028 /* AEDMO.swift in Sources */,
 				2FAB559C1BC78F070048F028 /* BuildingMO.swift in Sources */,
 				2FF112761BC7FD3C00E3449F /* AEDDAO.swift in Sources */,
-				2F3EF6BA1BCB859F00754820 /* TestAMapViewController.swift in Sources */,
+				2F3EF6BA1BCB859F00754820 /* BuildingLocationsMapViewController.swift in Sources */,
 				2FE2D93C1BC417480040229E /* ViewController.swift in Sources */,
 				2FACBCFB1BC639C3005F5FD4 /* AEDTableViewController.swift in Sources */,
 				2FAB559B1BC78F070048F028 /* BuildingMO+CoreDataProperties.swift in Sources */,
@@ -374,6 +377,7 @@
 				2FE2D93A1BC417480040229E /* AppDelegate.swift in Sources */,
 				2F3EF6B81BCB83E900754820 /* ConfigurationConstants.swift in Sources */,
 				2FACBCFD1BC63AA4005F5FD4 /* BuildingModel.swift in Sources */,
+				2F3EF6BD1BCBCA1900754820 /* BuildingTableViewSectionCell.swift in Sources */,
 				2FACBCFF1BC63ADA005F5FD4 /* AEDModel.swift in Sources */,
 				2FF112721BC7A09A00E3449F /* BaseDAO.swift in Sources */,
 			);
