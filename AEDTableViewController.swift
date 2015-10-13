@@ -71,10 +71,17 @@ class AEDTableViewController: UITableViewController, MAMapViewDelegate, AMapClou
     }
     
     func refreshAEDList() {
+        print("h")
+        if userLastLocationCoordinate2D == nil {
+            self.refreshControl?.endRefreshing()
+            return
+        }
         print("Refreshing AED list with coordinate \(userLastLocationCoordinate2D)")
         
-        let radius =  5000 // 2 KM
-        let centerPoint =  AMapCloudPoint.locationWithLatitude(CGFloat(Double((userLastLocationCoordinate2D?.latitude)!)), longitude: CGFloat(Double((userLastLocationCoordinate2D?.longitude)!)))
+        let radius =  5000 // 5 KM
+        let latitude = Double(userLastLocationCoordinate2D!.latitude)
+        let longitude = Double(userLastLocationCoordinate2D!.longitude)
+        let centerPoint =  AMapCloudPoint.locationWithLatitude(CGFloat(latitude), longitude: CGFloat(longitude))
         
         let placeAroundRequest =  AMapCloudPlaceAroundSearchRequest()
         placeAroundRequest.tableID = ConfigurationConstants.AMAP_CLOUD_MAP_TABLE_ID
@@ -114,7 +121,7 @@ class AEDTableViewController: UITableViewController, MAMapViewDelegate, AMapClou
     func initMapView() {
         MAMapServices.sharedServices().apiKey = ConfigurationConstants.AMAP_CLOUD_MAP_API_KEY
         mapView = MAMapView(frame: self.view.bounds)
-        mapView?.showsUserLocation = true
+        mapView!.showsUserLocation = true
         mapView!.delegate = self
     }
     
@@ -124,7 +131,6 @@ class AEDTableViewController: UITableViewController, MAMapViewDelegate, AMapClou
     }
     
     func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
-        
         if updatingLocation && isNewCoordinate(userLocation.coordinate) {
             refreshAEDList()
         }
@@ -154,11 +160,19 @@ class AEDTableViewController: UITableViewController, MAMapViewDelegate, AMapClou
         print("hello world")
         print(response.count)
         updateAvailableBuildings(response.POIs as! [AMapCloudPOI])
+        
+        if response.count == 0 {
+            let alert = UIAlertController(title: "", message: "5公里范围内没有可用的AED。请重新定位或搜索！请拨打120急救！", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     func cloudRequest(cloudSearchRequest: AnyObject!, error: NSError!) {
         print("ERROR while sending cloud request")
+        print(error)
     }
+
 
 
 
