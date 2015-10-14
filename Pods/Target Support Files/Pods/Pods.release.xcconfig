@@ -1,7 +1,7 @@
 ARCHS = $(ARCHS_STANDARD) $(ARCHS_STANDARD) , armv7s
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/AMap2DMap" "${PODS_ROOT}/AMapCloudMap"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/AMap3DMap" "${PODS_ROOT}/AMapCloudMap"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AMap2DMap" "${PODS_ROOT}/Headers/Public/AMapCloudMap"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AMap2DMap" -isystem "${PODS_ROOT}/Headers/Public/AMapCloudMap"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"stdc++.6.0.9" -l"z" -framework "AMapCloudKit" -framework "CoreLocation" -framework "CoreTelephony" -framework "MAMapKit" -framework "QuartzCore" -framework "Security" -framework "SystemConfiguration"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AMap3DMap" "${PODS_ROOT}/Headers/Public/AMapCloudMap"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AMap3DMap" -isystem "${PODS_ROOT}/Headers/Public/AMapCloudMap"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -l"stdc++.6.0.9" -l"z" -framework "AMapCloudKit" -framework "CoreGraphics" -framework "CoreLocation" -framework "CoreTelephony" -framework "CoreText" -framework "MAMapKit" -framework "OpenGLES" -framework "QuartzCore" -framework "Security" -framework "SystemConfiguration"
 PODS_ROOT = ${SRCROOT}/Pods

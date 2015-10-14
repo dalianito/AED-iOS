@@ -40,14 +40,15 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
     }
     func initMapView() {
         MAMapServices.sharedServices().apiKey = ConfigurationConstants.AMAP_CLOUD_MAP_API_KEY
-        mapView = MAMapView(frame: self.view.bounds)
+        mapView = MAMapView(frame: self.view.frame)
         mapView!.delegate = self
         self.view.addSubview(mapView!)
-       // self.view.sendSubviewToBack(mapView!)
         
-        mapView!.showsUserLocation = true
+        mapView!.desiredAccuracy = kCLLocationAccuracyBest
         mapView!.setUserTrackingMode(MAUserTrackingMode.Follow, animated: true)
+        mapView!.showsCompass = true
         mapView!.showsScale = true
+        
         
         let compassX = mapView?.compassOrigin.x
         
@@ -58,14 +59,19 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         
         mapView?.scaleOrigin = CGPointMake(scaleX!, 21)
         
-        mapView!.setZoomLevel(15.1, animated: true)
+        mapView!.zoomLevel = 10
+        
+        mapView!.zoomEnabled = true
+        
+        mapView!.showsUserLocation = true
+        print("zoom level")
+        print(mapView!.zoomLevel)
     }
     
 
     
     func onCloudPlaceAroundSearchDone(request:AMapCloudPlaceAroundSearchRequest, response:AMapCloudSearchResponse)
     {
-        print("hello world")
         print(response.count)
         for poi in response.POIs as! [AMapCloudPOI]{
             print(poi.distance)
@@ -76,14 +82,18 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
             annotation.subtitle = "1台(\(poi.distance)m)"
             mapView!.addAnnotation(annotation)
         }
+        
     }
 
     func cloudRequest(cloudSearchRequest: AnyObject!, error: NSError!) {
-        print("error")
+        print(error.localizedDescription)
+        let alert = UIAlertController(title: "", message: "请求失败！原因：\(error.localizedDescription) 请拨打120急救！", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func mapView(mapView:MAMapView, viewForAnnotation annotation:MAAnnotation) ->MAAnnotationView? {
-        print("hello annotation view")
+
         if annotation.isKindOfClass(MAPointAnnotation) {
             let annotationIdentifier = "aedBuildingIdentifier"
             
@@ -93,13 +103,52 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
                 poiAnnotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
             }
             
-            
-            poiAnnotationView?.image = UIImage(named: "aedIcon")
             poiAnnotationView!.animatesDrop   = true
             poiAnnotationView!.canShowCallout = true
+            poiAnnotationView!.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure)
             
             return poiAnnotationView;
         }
         return nil
+    }
+    
+    func mapView(mapView: MAMapView!, annotationView view: MAAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+        performSegueWithIdentifier("test", sender: control)
+    }
+    
+
+    
+    func zoomToFitMapAnnotations() {
+        if mapView!.annotations.count == 0 {
+            return
+        }
+        
+        var topLeftCoord = CLLocationCoordinate2D(latitude: -90, longitude: 180)
+        
+        var bottomRightCoord = CLLocationCoordinate2D(latitude: 90, longitude: -180)
+
+        for annotation in mapView!.annotations as! [MAAnnotation] {
+            if annotation.isKindOfClass(MAUserLocation) {
+                continue
+            }
+            
+            topLeftCoord.longitude = fmin(topLeftCoord.longitude, annotation.coordinate.longitude)
+            topLeftCoord.latitude = fmax(topLeftCoord.latitude, annotation.coordinate.latitude)
+            bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, annotation.coordinate.longitude)
+            bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, annotation.coordinate.latitude)
+        }
+        
+        var region = MACoordinateRegion()
+        region.center.latitude = topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5
+        region.center.longitude = topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5
+        region.span.latitudeDelta = fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * 1.2
+        region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.2
+        
+        mapView!.setRegion(region, animated: true)
+    }
+    
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("prepare for segue")
     }
 }

@@ -157,7 +157,6 @@ class AEDTableViewController: UITableViewController, MAMapViewDelegate, AMapClou
     
     func onCloudPlaceAroundSearchDone(request:AMapCloudPlaceAroundSearchRequest, response:AMapCloudSearchResponse)
     {
-        print("hello world")
         print(response.count)
         updateAvailableBuildings(response.POIs as! [AMapCloudPOI])
         

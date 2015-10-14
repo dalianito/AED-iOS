@@ -58,11 +58,11 @@ install_resource()
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "AMap2DMap/MAMapKit.framework/Versions/3.1.0.56231a5/Resources/AMap.bundle"
+  install_resource "AMap3DMap/MAMapKit.framework/Versions/3.1.0.ad266ca.738/Resources/AMap.bundle"
   install_resource "AMapCloudMap/AMapCloudKit.framework/Versions/1.2.0.5565057/Resources/AMapCloud.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "AMap2DMap/MAMapKit.framework/Versions/3.1.0.56231a5/Resources/AMap.bundle"
+  install_resource "AMap3DMap/MAMapKit.framework/Versions/3.1.0.ad266ca.738/Resources/AMap.bundle"
   install_resource "AMapCloudMap/AMapCloudKit.framework/Versions/1.2.0.5565057/Resources/AMapCloud.bundle"
 fi
 
