@@ -13,6 +13,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
     var cloudAPI : AMapCloudAPI?
     var mapView: MAMapView?
     var currentLocation: CLLocation?
+    var availableBuildings = [Int:BuildingModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,16 +74,9 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
     func onCloudPlaceAroundSearchDone(request:AMapCloudPlaceAroundSearchRequest, response:AMapCloudSearchResponse)
     {
         print(response.count)
-        for poi in response.POIs as! [AMapCloudPOI]{
-            print(poi.distance)
-            
-            let annotation = MAPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2DMake(Double(poi.location.latitude), Double(poi.location.longitude))
-            annotation.title = poi.name
-            annotation.subtitle = "1台(\(poi.distance)m)"
-            mapView!.addAnnotation(annotation)
-        }
+        updateAvailableBuildings(response.POIs as! [AMapCloudPOI])
         
+        zoomToFitMapAnnotations()
     }
 
     func cloudRequest(cloudSearchRequest: AnyObject!, error: NSError!) {
@@ -94,13 +88,14 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
     
     func mapView(mapView:MAMapView, viewForAnnotation annotation:MAAnnotation) ->MAAnnotationView? {
 
-        if annotation.isKindOfClass(MAPointAnnotation) {
+        if annotation.isKindOfClass(CustomAnnotation) {
             let annotationIdentifier = "aedBuildingIdentifier"
             
-            var poiAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationIdentifier) as? MAPinAnnotationView
+            var poiAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationIdentifier) as? AEDBuildingAnnotationView
             
             if poiAnnotationView == nil {
-                poiAnnotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+                poiAnnotationView = AEDBuildingAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+                
             }
             
             poiAnnotationView!.animatesDrop   = true
@@ -113,7 +108,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
     }
     
     func mapView(mapView: MAMapView!, annotationView view: MAAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-        performSegueWithIdentifier("test", sender: control)
+        performSegueWithIdentifier("ShowBuildingInfoSegue", sender: view)
     }
     
 
@@ -146,9 +141,45 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         
         mapView!.setRegion(region, animated: true)
     }
-    
+    func updateAvailableBuildings(pois: [AMapCloudPOI]) {
+        availableBuildings = [Int:BuildingModel]()
+        var index = 0
+        for poi in pois {
+            let building = BuildingModel()
+            building.name = poi.name
+            building.address = poi.address
+            building.distance = poi.distance
+            
+            
+            let customFields = poi.customFields
+            let aed = AEDModel()
+            aed.floor = customFields["floor"] as? String
+            aed.specificLocation = customFields["location"] as? String
+            aed.directionToFind = customFields["directionToFind"] as? String
+            aed.building = building
+            building.aeds.append(aed)
+            
+            availableBuildings[index] = building
+            
+            print(poi.distance)
+            
+            let annotation = CustomAnnotation()
+            annotation.coordinate = CLLocationCoordinate2DMake(Double(poi.location.latitude), Double(poi.location.longitude))
+            annotation.title = poi.name
+            annotation.subtitle = "1台(\(poi.distance)m)"
+            annotation.customProperties["building"] = building
+            mapView!.addAnnotation(annotation)
+            index += 1
+        }
+    }
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print("prepare for segue")
+        if segue.identifier == "ShowBuildingInfoSegue" {
+            let aedDetailViewController = segue.destinationViewController as! BuildingInfoViewController
+            let selectedAnnotationView = sender as! AEDBuildingAnnotationView
+            let building = selectedAnnotationView.customProperties!["building"]
+            aedDetailViewController.building = building as! BuildingModel
+        }
     }
 }

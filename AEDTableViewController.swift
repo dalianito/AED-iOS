@@ -28,14 +28,6 @@ class AEDTableViewController: UITableViewController, MAMapViewDelegate, AMapClou
         self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
     }
 
-
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source for section
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -46,7 +38,7 @@ class AEDTableViewController: UITableViewController, MAMapViewDelegate, AMapClou
         let  headerCell = tableView.dequeueReusableCellWithIdentifier("SectionHeaderCell") as! BuildingTableViewSectionCell
         let building = availableBuildings[section]
         headerCell.buildingNameLabel.text = "\(building.name)"
-        headerCell.distanceLabel.text = "\(building.distance)米"
+        headerCell.distanceLabel.text = "\(building.distance)m"
         
         return headerCell
     }

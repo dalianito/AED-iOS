@@ -14,7 +14,6 @@ class AEDInfoTableViewCell: UITableViewCell {
     
     @IBOutlet weak var floorLabel: UILabel!
     @IBOutlet weak var specificLocationLabel: UILabel!
-    @IBOutlet weak var previewImageView: UIImageView!
     
     var aed : AEDModel!
     

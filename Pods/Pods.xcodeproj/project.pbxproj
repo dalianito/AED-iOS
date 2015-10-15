@@ -13,19 +13,20 @@
 
 /* Begin PBXFileReference section */
 		10834806BD7B412BC24F347361FA2C8E /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		133C6DA812230B17F51781163AB281DE /* AMapCloud.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = AMapCloud.bundle; path = AMapCloudKit.framework/Versions/1.2.0.5565057/Resources/AMapCloud.bundle; sourceTree = "<group>"; };
 		272643F56613CA0D336AE3DBF19DC404 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
 		37DB56D75062CC75FCB0966E1C6E8A8E /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3C4F0D1D367E4222006522456EBC75BE /* AMapCloud.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = AMapCloud.bundle; path = AMapCloudKit.framework/Versions/1.2.0.5565057/Resources/AMapCloud.bundle; sourceTree = "<group>"; };
 		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		4E762F23EC34ED4A6FF3312D84E33A40 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		5F594D24501AF47E1CA7C2E600DF80BF /* AMapCloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapCloudKit.framework; sourceTree = "<group>"; };
 		6911BECA35E7518D864239B7E898EEF3 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
-		91AE281052FA3E2D1B59151902789E4F /* AMapCloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapCloudKit.framework; sourceTree = "<group>"; };
+		74B9013BCD4D1FE1AE56505E74A7E0F4 /* AMap.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = MAMapKit.framework/Versions/3.1.0.ad266ca.738/Resources/AMap.bundle; sourceTree = "<group>"; };
+		88FB63912346F4CEEB3D5CEB30411D68 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		98C98CDFB3F20F2925F6CD1F141BB14F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
 		A1A36D34413696BE466E2CA0AFF194DA /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		B2D826FD77843DE3E24403430F3AA6B1 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BFDCEDF11CC5329E8A2F6885DA7FBE21 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD58D0C291C65FDD7AEC53937FF4883A /* AMap.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = MAMapKit.framework/Versions/3.1.0.ad266ca.738/Resources/AMap.bundle; sourceTree = "<group>"; };
+		C3152741BD9CB65E163608E9B8EE0AAA /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "Reveal-Framework-1.5.1/Reveal.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,18 +49,10 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		1479BFCD8543552FEFB133E36AA6EA67 /* Resources */ = {
+		0D6BA774308DD68CB352FF58CD402810 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CD58D0C291C65FDD7AEC53937FF4883A /* AMap.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		1D5273781BF4EC40D6C24433BFEBF5E7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				91AE281052FA3E2D1B59151902789E4F /* AMapCloudKit.framework */,
+				88FB63912346F4CEEB3D5CEB30411D68 /* MAMapKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -72,20 +65,29 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		531BD75704C18D6680C49EE39A5AEF1A /* Resources */ = {
+		253F00C1EC2B26B05AEA904C7E4E6439 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				133C6DA812230B17F51781163AB281DE /* AMapCloud.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		66587C080B8C9D9AABBF4A9806E867B6 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B2D826FD77843DE3E24403430F3AA6B1 /* MAMapKit.framework */,
+				5F594D24501AF47E1CA7C2E600DF80BF /* AMapCloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2B07DA30CF4BCCAE06D82679ECB3DC04 /* AMapCloudMap */ = {
+			isa = PBXGroup;
+			children = (
+				253F00C1EC2B26B05AEA904C7E4E6439 /* Frameworks */,
+				DB76D57AD51A662D1C512AB702FD0F7E /* Resources */,
+			);
+			path = AMapCloudMap;
+			sourceTree = "<group>";
+		};
+		7B35BA2626282DF270FBF6A092540F0B /* Reveal-iOS-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				C115CC870DA32704500C2125556EF52A /* Frameworks */,
+			);
+			path = "Reveal-iOS-SDK";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -93,19 +95,18 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				8A72A2C01F7F87CE48BA3B4D18F9DB28 /* Pods */,
+				EF3BD84F0A1D400A86B33ACEF888CF27 /* Pods */,
 				1F0B9F713A13B4F29BE0C0E7483B187B /* Products */,
 				037C0CA694176A3C0915F62C9D20B3E6 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8A72A2C01F7F87CE48BA3B4D18F9DB28 /* Pods */ = {
+		AB81ED0FE8315D075F1FA386B5D11A29 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CA40AD4DFCEBA623781B1A282019C646 /* AMap3DMap */,
-				B480055D73A329536801F75D739C74A8 /* AMapCloudMap */,
+				74B9013BCD4D1FE1AE56505E74A7E0F4 /* AMap.bundle */,
 			);
-			name = Pods;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		B3D1D13E0C6553800746CB8FD61CF946 /* Pods */ = {
@@ -121,15 +122,6 @@
 			);
 			name = Pods;
 			path = "Target Support Files/Pods";
-			sourceTree = "<group>";
-		};
-		B480055D73A329536801F75D739C74A8 /* AMapCloudMap */ = {
-			isa = PBXGroup;
-			children = (
-				1D5273781BF4EC40D6C24433BFEBF5E7 /* Frameworks */,
-				531BD75704C18D6680C49EE39A5AEF1A /* Resources */,
-			);
-			path = AMapCloudMap;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -148,13 +140,39 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		CA40AD4DFCEBA623781B1A282019C646 /* AMap3DMap */ = {
+		C115CC870DA32704500C2125556EF52A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				66587C080B8C9D9AABBF4A9806E867B6 /* Frameworks */,
-				1479BFCD8543552FEFB133E36AA6EA67 /* Resources */,
+				C3152741BD9CB65E163608E9B8EE0AAA /* Reveal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB76D57AD51A662D1C512AB702FD0F7E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3C4F0D1D367E4222006522456EBC75BE /* AMapCloud.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		ED77D2AB8024C7C89911A9DCD6CFF818 /* AMap3DMap */ = {
+			isa = PBXGroup;
+			children = (
+				0D6BA774308DD68CB352FF58CD402810 /* Frameworks */,
+				AB81ED0FE8315D075F1FA386B5D11A29 /* Resources */,
 			);
 			path = AMap3DMap;
+			sourceTree = "<group>";
+		};
+		EF3BD84F0A1D400A86B33ACEF888CF27 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ED77D2AB8024C7C89911A9DCD6CFF818 /* AMap3DMap */,
+				2B07DA30CF4BCCAE06D82679ECB3DC04 /* AMapCloudMap */,
+				7B35BA2626282DF270FBF6A092540F0B /* Reveal-iOS-SDK */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -11,6 +11,7 @@ import UIKit
 class BuildingModel {
     
     // Mark: Properties
+    var buildingID: String!
     var name : String!
     var phone : String!
     var address : String!
@@ -19,7 +20,6 @@ class BuildingModel {
     
     // Mark: Initialization
     init() {
-        
     }
     init?(name: String, phone: String, address: String) {
         if name.isEmpty || phone.isEmpty || address.isEmpty {

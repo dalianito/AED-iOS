@@ -10,17 +10,22 @@ import UIKit
 
 class AEDBuildingAnnotationView: MAPinAnnotationView {
     
-    var calloutView: BuildingCalloutCell?
+    //var calloutView: BuildingCalloutCell?
+    var customProperties: [String: AnyObject?]?
     
     override init!(annotation: MAAnnotation!, reuseIdentifier: String!) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        canShowCallout = true
+        //canShowCallout = true
+        if annotation.isKindOfClass(CustomAnnotation) {
+            let customAnnotation = annotation as! CustomAnnotation
+            customProperties = customAnnotation.customProperties
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+    /*
     override func setSelected(selected: Bool, animated: Bool) {
         if (self.selected == selected)
         {
@@ -57,6 +62,6 @@ class AEDBuildingAnnotationView: MAPinAnnotationView {
         super.setSelected(selected, animated: animated)
     }
 
-
+    */
 
 }

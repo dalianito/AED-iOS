@@ -1,7 +1,7 @@
 ARCHS = $(ARCHS_STANDARD) $(ARCHS_STANDARD) , armv7s
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/AMap3DMap" "${PODS_ROOT}/AMapCloudMap"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/AMap3DMap" "${PODS_ROOT}/AMapCloudMap" "${PODS_ROOT}/Reveal-iOS-SDK/Reveal-Framework-1.5.1"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AMap3DMap" "${PODS_ROOT}/Headers/Public/AMapCloudMap"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AMap3DMap" -isystem "${PODS_ROOT}/Headers/Public/AMapCloudMap"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -l"stdc++.6.0.9" -l"z" -framework "AMapCloudKit" -framework "CoreGraphics" -framework "CoreLocation" -framework "CoreTelephony" -framework "CoreText" -framework "MAMapKit" -framework "OpenGLES" -framework "QuartzCore" -framework "Security" -framework "SystemConfiguration"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AMap3DMap" "${PODS_ROOT}/Headers/Public/AMapCloudMap" "${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AMap3DMap" -isystem "${PODS_ROOT}/Headers/Public/AMapCloudMap" -isystem "${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -l"stdc++.6.0.9" -l"z" -framework "AMapCloudKit" -framework "CFNetwork" -framework "CoreGraphics" -framework "CoreLocation" -framework "CoreTelephony" -framework "CoreText" -framework "MAMapKit" -framework "OpenGLES" -framework "QuartzCore" -framework "Reveal" -framework "Security" -framework "SystemConfiguration"
 PODS_ROOT = ${SRCROOT}/Pods
