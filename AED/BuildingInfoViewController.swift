@@ -23,11 +23,7 @@ class BuildingInfoViewController: UIViewController, UITableViewDelegate, UITable
     override func viewWillAppear(animated: Bool) {
         buildingAddressLabel.text = building.address
         buildingPhoneLabel.text = building.phone
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        navigationItem.title = building.name
     }
     
     
@@ -47,16 +43,6 @@ class BuildingInfoViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func backToMapView(sender: UIBarButtonItem) {
          navigationController!.popViewControllerAnimated(true)
     }
