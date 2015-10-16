@@ -12,33 +12,80 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
 
     var cloudAPI : AMapCloudAPI?
     var mapView: MAMapView?
-    var currentLocation: CLLocation?
-    var availableBuildings = [Int:BuildingModel]()
+    var userLastLocationCoordinate2D: CLLocationCoordinate2D?
+    var availableBuildings = [String:BuildingModel]()
+    var sortedBuildingList: [BuildingModel]?
+    let MAX_NO_OF_BUILDINGS_TO_DISPLAY = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initMapView()
         
-        let placeAround =  AMapCloudPlaceAroundSearchRequest()
-        placeAround.tableID = ConfigurationConstants.AMAP_CLOUD_MAP_TABLE_ID
-        let radius =  5000
-        let centerPoint =  AMapCloudPoint.locationWithLatitude(38.926, longitude:121.66)
-        placeAround.radius = radius
-        placeAround.center = centerPoint
-        placeAround.keywords = ""
-        placeAround.offset = 10
-        
-
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.cloudAPI = AMapCloudAPI(cloudKey:ConfigurationConstants.AMAP_CLOUD_MAP_API_KEY, delegate:nil)
         self.cloudAPI?.delegate = self;
-        self.cloudAPI!.AMapCloudPlaceAroundSearch(placeAround)
+        initMapView()
+        refreshAEDList()
     }
+    
+    func sortBuildingList() {
+        //print("Sorting Building List")
+        sortedBuildingList = [BuildingModel]()
+        for (_, building) in availableBuildings {
+            sortedBuildingList!.append(building)
+        }
+        
+        sortedBuildingList!.sortInPlace({$0.distance < $1.distance})
+    }
+    
+    func refreshAEDList() {
+        //print("Refreshing AED list with coordinate \(userLastLocationCoordinate2D)")
+        if userLastLocationCoordinate2D == nil {
+            //print("cannot refresh aed list because user last location is nil")
+            return
+        }
+        
+        
+        let latitude = Double(userLastLocationCoordinate2D!.latitude)
+        let longitude = Double(userLastLocationCoordinate2D!.longitude)
+        let centerPoint =  AMapCloudPoint.locationWithLatitude(CGFloat(latitude), longitude: CGFloat(longitude))
+        
+        let placeAroundRequest =  AMapCloudPlaceAroundSearchRequest()
+        placeAroundRequest.tableID = ConfigurationConstants.AMAP_CLOUD_MAP_TABLE_ID
+        placeAroundRequest.radius = ConfigurationConstants.AMAP_CLOUD_MAP_SEARCH_RADIUS_IN_METER
+        placeAroundRequest.center = centerPoint
+        placeAroundRequest.offset = 20
+        
+        self.cloudAPI!.AMapCloudPlaceAroundSearch(placeAroundRequest)
+    }
+    
     func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
-        if updatingLocation {
-            currentLocation = userLocation.location
+        if (updatingLocation && isNewCoordinate(userLocation.coordinate)) || sortedBuildingList == nil || sortedBuildingList!.isEmpty {
+            refreshAEDList()
+        } else {
+            //print("Cannot refresh AEDList because")
+            //print("Last coordinate is: \(userLastLocationCoordinate2D) and new coordinate is: \(userLocation.coordinate)")
         }
     }
+    
+    func isNewCoordinate(coordinate: CLLocationCoordinate2D?) -> Bool {
+        if coordinate == nil {
+            return false
+        }
+        
+        if userLastLocationCoordinate2D == nil {
+            userLastLocationCoordinate2D = coordinate
+            return true
+        }
+        
+        if userLastLocationCoordinate2D?.latitude != coordinate!.latitude || userLastLocationCoordinate2D?.longitude != coordinate!.longitude {
+            userLastLocationCoordinate2D = coordinate
+            return true
+        }
+        
+        return false
+    }
+        
     func initMapView() {
         MAMapServices.sharedServices().apiKey = ConfigurationConstants.AMAP_CLOUD_MAP_API_KEY
         mapView = MAMapView(frame: self.view.frame)
@@ -57,25 +104,18 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         
         //设置指南针和比例尺的位置
         mapView?.compassOrigin = CGPointMake(compassX!, 21)
-        
         mapView?.scaleOrigin = CGPointMake(scaleX!, 21)
-        
-        mapView!.zoomLevel = 10
-        
         mapView!.zoomEnabled = true
-        
         mapView!.showsUserLocation = true
-        print("zoom level")
-        print(mapView!.zoomLevel)
+        userLastLocationCoordinate2D = nil
     }
     
 
     
     func onCloudPlaceAroundSearchDone(request:AMapCloudPlaceAroundSearchRequest, response:AMapCloudSearchResponse)
     {
-        print(response.count)
+        //print("Found \(response.count) AEDs")
         updateAvailableBuildings(response.POIs as! [AMapCloudPOI])
-        
         zoomToFitMapAnnotations()
     }
 
@@ -122,16 +162,19 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         
         var bottomRightCoord = CLLocationCoordinate2D(latitude: 90, longitude: -180)
 
-        for annotation in mapView!.annotations as! [MAAnnotation] {
-            if annotation.isKindOfClass(MAUserLocation) {
-                continue
-            }
-            
-            topLeftCoord.longitude = fmin(topLeftCoord.longitude, annotation.coordinate.longitude)
-            topLeftCoord.latitude = fmax(topLeftCoord.latitude, annotation.coordinate.latitude)
-            bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, annotation.coordinate.longitude)
-            bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, annotation.coordinate.latitude)
+        for index in 0...MAX_NO_OF_BUILDINGS_TO_DISPLAY {
+            let coordinate = sortedBuildingList![index].coordinate
+            topLeftCoord.longitude = fmin(topLeftCoord.longitude, coordinate.longitude)
+            topLeftCoord.latitude = fmax(topLeftCoord.latitude, coordinate.latitude)
+            bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, coordinate.longitude)
+            bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, coordinate.latitude)
         }
+        
+        let annotation = mapView!.userLocation
+        topLeftCoord.longitude = fmin(topLeftCoord.longitude, annotation.coordinate.longitude)
+        topLeftCoord.latitude = fmax(topLeftCoord.latitude, annotation.coordinate.latitude)
+        bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, annotation.coordinate.longitude)
+        bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, annotation.coordinate.latitude)
         
         var region = MACoordinateRegion()
         region.center.latitude = topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5
@@ -139,19 +182,26 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         region.span.latitudeDelta = fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * 1.2
         region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.2
         
-        mapView!.setRegion(region, animated: true)
+        mapView!.setRegion(region, animated: false)
     }
     func updateAvailableBuildings(pois: [AMapCloudPOI]) {
-        availableBuildings = [Int:BuildingModel]()
-        var index = 0
+        availableBuildings = [String:BuildingModel]()
+
         for poi in pois {
-            let building = BuildingModel()
-            building.name = poi.name
-            building.address = poi.address
-            building.distance = poi.distance
-            
-            
             let customFields = poi.customFields
+            let buildingID = customFields["buildingID"] as! String
+            var building: BuildingModel
+            if availableBuildings[buildingID] == nil {
+                building = BuildingModel()
+                building.name = poi.name
+                building.address = poi.address
+                building.distance = poi.distance
+                building.coordinate = CLLocationCoordinate2DMake(Double(poi.location.latitude), Double(poi.location.longitude))
+                building.buildingID = buildingID
+            } else {
+                building = availableBuildings[buildingID]!
+            }
+            
             let aed = AEDModel()
             aed.floor = customFields["floor"] as? String
             aed.specificLocation = customFields["location"] as? String
@@ -159,22 +209,33 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
             aed.building = building
             building.aeds.append(aed)
             
-            availableBuildings[index] = building
-            
-            print(poi.distance)
-            
+            availableBuildings[buildingID] = building
+        }
+ 
+        sortBuildingList()
+        var index = 1
+        var firstAnnotation : CustomAnnotation?
+        for building in sortedBuildingList! {
             let annotation = CustomAnnotation()
-            annotation.coordinate = CLLocationCoordinate2DMake(Double(poi.location.latitude), Double(poi.location.longitude))
-            annotation.title = poi.name
-            annotation.subtitle = "1台(\(poi.distance)m)"
+            annotation.coordinate = building.coordinate
+            annotation.title = "\(index). \(building.name)"
+            annotation.subtitle = "\(building.aeds.count)台(\(building.distance)m)"
             annotation.customProperties["building"] = building
+            annotation.customProperties["index"] = index
+ 
             mapView!.addAnnotation(annotation)
+            
+            if index == 1 {
+                firstAnnotation = annotation
+            }
+            
             index += 1
         }
+        
+        mapView!.selectAnnotation(firstAnnotation, animated: false)
     }
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("prepare for segue")
         if segue.identifier == "ShowBuildingInfoSegue" {
             let aedDetailViewController = segue.destinationViewController as! BuildingInfoViewController
             let selectedAnnotationView = sender as! AEDBuildingAnnotationView

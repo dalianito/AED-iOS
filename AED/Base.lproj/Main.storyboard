@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1sZ-lo-Ywc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4Xr-5a-bRe">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -20,13 +20,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="zBt-35-QTe"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <segue destination="27w-IL-6V5" kind="show" identifier="ShowBuildingInfoSegue" id="DBW-jE-Y5Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0wV-rp-Vyq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1366" y="-247"/>
+            <point key="canvasLocation" x="1202" y="-199"/>
         </scene>
         <!--BuildingName-->
         <scene sceneID="cWP-25-qoU">
@@ -90,26 +91,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZy-Jl-LWo">
-                                                    <rect key="frame" x="106" y="8" width="486" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZy-Jl-LWo">
+                                                    <rect key="frame" x="101.5" y="8" width="490.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="楼层:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7g-Mb-faw">
-                                                    <rect key="frame" x="59" y="8" width="39" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="楼层:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7g-Mb-faw">
+                                                    <rect key="frame" x="59" y="8" width="34.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="位置:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHz-bn-m7b">
-                                                    <rect key="frame" x="59" y="34" width="39" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBD-LE-gW9">
-                                                    <rect key="frame" x="106" y="34" width="486" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="位置:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHz-bn-m7b">
+                                                    <rect key="frame" x="59" y="34" width="34.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -117,7 +112,18 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aedIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ZGL-Qw-JB2">
                                                     <rect key="frame" x="16" y="9" width="30" height="30"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBD-LE-gW9">
+                                                    <rect key="frame" x="101" y="34" width="300" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vBD-LE-gW9" firstAttribute="leading" secondItem="KHz-bn-m7b" secondAttribute="trailing" constant="5" id="QS4-wZ-w6Z"/>
+                                                <constraint firstItem="bZy-Jl-LWo" firstAttribute="trailing" secondItem="xws-pe-jfg" secondAttribute="trailingMargin" id="dUC-5L-eKE"/>
+                                                <constraint firstItem="bZy-Jl-LWo" firstAttribute="leading" secondItem="X7g-Mb-faw" secondAttribute="trailing" constant="5" id="rny-mr-Mnf"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="floorLabel" destination="bZy-Jl-LWo" id="f5y-mo-krN"/>
@@ -131,6 +137,7 @@
                         <constraints>
                             <constraint firstItem="sZ2-4M-HAB" firstAttribute="leading" secondItem="EoC-08-v8j" secondAttribute="leading" id="SIx-D1-8gs"/>
                             <constraint firstAttribute="trailing" secondItem="OEs-n0-RBe" secondAttribute="trailing" id="WAZ-33-oeH"/>
+                            <constraint firstItem="OEs-n0-RBe" firstAttribute="width" secondItem="EoC-08-v8j" secondAttribute="width" id="XPB-Vb-pgp"/>
                             <constraint firstAttribute="trailing" secondItem="sZ2-4M-HAB" secondAttribute="trailing" id="YUp-9v-AUn"/>
                             <constraint firstItem="OEs-n0-RBe" firstAttribute="leading" secondItem="EoC-08-v8j" secondAttribute="leading" id="jri-BF-Wkf"/>
                             <constraint firstItem="OEs-n0-RBe" firstAttribute="top" secondItem="sZ2-4M-HAB" secondAttribute="bottom" constant="10" id="s1h-iR-4kK"/>
@@ -151,7 +158,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4J-ol-Zrr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4335" y="-509"/>
+            <point key="canvasLocation" x="2067" y="-199"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="upI-kM-bkL">
@@ -422,7 +429,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1903" y="519"/>
+            <point key="canvasLocation" x="1207" y="567"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0CE-aG-kFA">
@@ -458,7 +465,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VJf-11-xdk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146" y="958"/>
+            <point key="canvasLocation" x="1226" y="1294"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dNQ-ok-Qdh">
@@ -476,7 +483,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l4n-25-Pex" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3508" y="-516"/>
+            <point key="canvasLocation" x="2067" y="-952"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZTi-SO-O4G">
@@ -494,7 +501,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lkN-59-lve" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146" y="-516"/>
+            <point key="canvasLocation" x="1202" y="-952"/>
         </scene>
     </scenes>
     <resources>
@@ -503,8 +510,8 @@
         <image name="mapIcon" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eyt-cN-6MH"/>
-        <segue reference="KWH-Si-Gtg"/>
+        <segue reference="jxv-ux-8ga"/>
+        <segue reference="yZ2-LO-57y"/>
         <segue reference="DBW-jE-Y5Q"/>
     </inferredMetricsTieBreakers>
 </document>

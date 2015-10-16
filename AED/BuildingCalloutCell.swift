@@ -26,7 +26,6 @@ class BuildingCalloutCell: UIView {
     }
     
     func initSubViews() {
-        print("init sub vies")
         self.backgroundColor = UIColor.whiteColor()
         
         titleLabel = UILabel.init(frame: CGRectMake(CGFloat(kPortraitMargin), CGFloat(kPortraitMargin), CGFloat(kTitleWidth), CGFloat(kTitleHeight)))

@@ -16,6 +16,7 @@ class BuildingModel {
     var phone : String!
     var address : String!
     var distance : Int!
+    var coordinate: CLLocationCoordinate2D!
     var aeds = [AEDModel]()
     
     // Mark: Initialization

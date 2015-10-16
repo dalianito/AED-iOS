@@ -23,6 +23,7 @@ class BuildingInfoViewController: UIViewController, UITableViewDelegate, UITable
     override func viewWillAppear(animated: Bool) {
         buildingAddressLabel.text = building.address
         buildingPhoneLabel.text = building.phone
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         navigationItem.title = building.name
     }
     
@@ -44,6 +45,8 @@ class BuildingInfoViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func backToMapView(sender: UIBarButtonItem) {
-         navigationController!.popViewControllerAnimated(true)
+        navigationController!.setNavigationBarHidden(true, animated: false)
+        navigationController!.popViewControllerAnimated(true)
+        
     }
 }

@@ -19,6 +19,12 @@ class AEDTableViewCell: UITableViewCell {
     // MARK: Actions
     func setView() {
         floorLabel.text = aed.floor
+        
+        specificLocationLabel.frame.size.width = self.frame.width - 100.0
+        print(specificLocationLabel.frame)
+        specificLocationLabel.numberOfLines = 10
+        
+        specificLocationLabel.frame.size.height = 200
         specificLocationLabel.text = aed.specificLocation
     }
 

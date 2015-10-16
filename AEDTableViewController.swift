@@ -63,7 +63,6 @@ class AEDTableViewController: UITableViewController, MAMapViewDelegate, AMapClou
     }
     
     func refreshAEDList() {
-        print("h")
         if userLastLocationCoordinate2D == nil {
             self.refreshControl?.endRefreshing()
             return
@@ -79,7 +78,6 @@ class AEDTableViewController: UITableViewController, MAMapViewDelegate, AMapClou
         placeAroundRequest.tableID = ConfigurationConstants.AMAP_CLOUD_MAP_TABLE_ID
         placeAroundRequest.radius = radius
         placeAroundRequest.center = centerPoint
-        placeAroundRequest.keywords = ""
         placeAroundRequest.offset = 20
         
         self.cloudAPI!.AMapCloudPlaceAroundSearch(placeAroundRequest)

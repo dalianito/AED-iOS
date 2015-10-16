@@ -21,17 +21,7 @@ class AEDInfoTableViewCell: UITableViewCell {
     func setView() {
         floorLabel.text = aed.floor
         specificLocationLabel.text = aed.specificLocation
+        print(self.bounds)
+        specificLocationLabel.frame.size.width = self.frame.width - 100.0
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
