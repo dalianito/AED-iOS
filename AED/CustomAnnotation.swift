@@ -10,5 +10,6 @@ import UIKit
 
 class CustomAnnotation: MAPointAnnotation {
 
+    var sequenceNumber = 0
     var customProperties = [String: AnyObject?]()
 }

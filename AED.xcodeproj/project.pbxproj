@@ -15,6 +15,7 @@
 		2F3EF6BD1BCBCA1900754820 /* BuildingTableViewSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EF6BB1BCBCA1900754820 /* BuildingTableViewSectionCell.swift */; settings = {ASSET_TAGS = (); }; };
 		2F4474091BCDE21200692CD7 /* AEDBuildingAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4474081BCDE21200692CD7 /* AEDBuildingAnnotationView.swift */; settings = {ASSET_TAGS = (); }; };
 		2F44740B1BCDE96000692CD7 /* BuildingCalloutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F44740A1BCDE96000692CD7 /* BuildingCalloutCell.swift */; settings = {ASSET_TAGS = (); }; };
+		2F8F4C361BD13C5A00A2F198 /* BottomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8F4C351BD13C5A00A2F198 /* BottomTabBarController.swift */; settings = {ASSET_TAGS = (); }; };
 		2FAB558C1BC7744D0048F028 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB558A1BC7744D0048F028 /* Model.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		2FAB559B1BC78F070048F028 /* BuildingMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB55991BC78F070048F028 /* BuildingMO+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		2FAB559C1BC78F070048F028 /* BuildingMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB559A1BC78F070048F028 /* BuildingMO.swift */; settings = {ASSET_TAGS = (); }; };
@@ -57,6 +58,7 @@
 		2F3EF6BB1BCBCA1900754820 /* BuildingTableViewSectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingTableViewSectionCell.swift; sourceTree = "<group>"; };
 		2F4474081BCDE21200692CD7 /* AEDBuildingAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AEDBuildingAnnotationView.swift; sourceTree = "<group>"; };
 		2F44740A1BCDE96000692CD7 /* BuildingCalloutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingCalloutCell.swift; sourceTree = "<group>"; };
+		2F8F4C351BD13C5A00A2F198 /* BottomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomTabBarController.swift; sourceTree = "<group>"; };
 		2FAB558B1BC7744D0048F028 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		2FAB55991BC78F070048F028 /* BuildingMO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BuildingMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2FAB559A1BC78F070048F028 /* BuildingMO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingMO.swift; sourceTree = "<group>"; };
@@ -113,6 +115,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2F8F4C371BD13C6400A2F198 /* ControlUtils */ = {
+			isa = PBXGroup;
+			children = (
+				2F8F4C351BD13C5A00A2F198 /* BottomTabBarController.swift */,
+			);
+			name = ControlUtils;
+			sourceTree = "<group>";
+		};
+		2F8F4C381BD13C7F00A2F198 /* AMapUtils */ = {
+			isa = PBXGroup;
+			children = (
+				2F1617F61BCF363E002E178E /* CustomAnnotation.swift */,
+				2F4474081BCDE21200692CD7 /* AEDBuildingAnnotationView.swift */,
+				2F44740A1BCDE96000692CD7 /* BuildingCalloutCell.swift */,
+			);
+			name = AMapUtils;
+			sourceTree = "<group>";
+		};
 		2FAB559D1BC78F3C0048F028 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +177,8 @@
 		2FE2D9381BC417480040229E /* AED */ = {
 			isa = PBXGroup;
 			children = (
+				2F8F4C381BD13C7F00A2F198 /* AMapUtils */,
+				2F8F4C371BD13C6400A2F198 /* ControlUtils */,
 				2FF112771BC8096600E3449F /* lib */,
 				2FF112701BC7A08800E3449F /* DAO */,
 				2FAB55A21BC793AA0048F028 /* Model */,
@@ -171,9 +193,6 @@
 				2FE2D93D1BC417480040229E /* Main.storyboard */,
 				2F1617F41BCF2D10002E178E /* BuildingInfoViewController.swift */,
 				2F3EF6B91BCB859F00754820 /* BuildingLocationsMapViewController.swift */,
-				2F1617F61BCF363E002E178E /* CustomAnnotation.swift */,
-				2F4474081BCDE21200692CD7 /* AEDBuildingAnnotationView.swift */,
-				2F44740A1BCDE96000692CD7 /* BuildingCalloutCell.swift */,
 				2FE2D9401BC417480040229E /* Assets.xcassets */,
 				2FE2D9421BC417480040229E /* LaunchScreen.storyboard */,
 				2FE2D9451BC417480040229E /* Info.plist */,
@@ -381,6 +400,7 @@
 				2FACBD011BC6424C005F5FD4 /* AEDInfoTableViewCell.swift in Sources */,
 				2FF112741BC7A4E900E3449F /* BuildingDAO.swift in Sources */,
 				2FF112791BC8097C00E3449F /* SwiftyJSON.swift in Sources */,
+				2F8F4C361BD13C5A00A2F198 /* BottomTabBarController.swift in Sources */,
 				2FAB55A11BC78F940048F028 /* AEDMO.swift in Sources */,
 				2FAB559C1BC78F070048F028 /* BuildingMO.swift in Sources */,
 				2FF112761BC7FD3C00E3449F /* AEDDAO.swift in Sources */,

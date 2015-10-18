@@ -93,21 +93,15 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         self.view.addSubview(mapView!)
         
         mapView!.desiredAccuracy = kCLLocationAccuracyBest
-        mapView!.setUserTrackingMode(MAUserTrackingMode.Follow, animated: true)
-        mapView!.showsCompass = true
-        mapView!.showsScale = true
+        mapView!.setUserTrackingMode(MAUserTrackingMode.FollowWithHeading, animated: true)
+        mapView!.showsCompass = false
+        mapView!.showsScale = false
         
-        
-        let compassX = mapView?.compassOrigin.x
-        
-        let scaleX = mapView?.scaleOrigin.x
-        
-        //设置指南针和比例尺的位置
-        mapView?.compassOrigin = CGPointMake(compassX!, 21)
-        mapView?.scaleOrigin = CGPointMake(scaleX!, 21)
+
         mapView!.zoomEnabled = true
         mapView!.showsUserLocation = true
         userLastLocationCoordinate2D = nil
+        print(mapView!.getMapStatus())
     }
     
 
@@ -135,12 +129,10 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
             
             if poiAnnotationView == nil {
                 poiAnnotationView = AEDBuildingAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
-                
             }
             
-            poiAnnotationView!.animatesDrop   = true
-            poiAnnotationView!.canShowCallout = true
-            poiAnnotationView!.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure)
+            //poiAnnotationView!.canShowCallout = true
+            //poiAnnotationView!.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure)
             
             return poiAnnotationView;
         }
@@ -213,7 +205,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         }
  
         sortBuildingList()
-        var index = 1
+        var index = 0
         var firstAnnotation : CustomAnnotation?
         for building in sortedBuildingList! {
             let annotation = CustomAnnotation()
@@ -221,11 +213,11 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
             annotation.title = "\(index). \(building.name)"
             annotation.subtitle = "\(building.aeds.count)台(\(building.distance)m)"
             annotation.customProperties["building"] = building
-            annotation.customProperties["index"] = index
+            annotation.sequenceNumber = index
  
             mapView!.addAnnotation(annotation)
             
-            if index == 1 {
+            if index == 0 {
                 firstAnnotation = annotation
             }
             
