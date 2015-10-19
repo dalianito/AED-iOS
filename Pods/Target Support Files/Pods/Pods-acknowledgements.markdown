@@ -11,6 +11,11 @@ Copyright © 2014 AutoNavi. All Rights Reserved.
 Copyright © 2014 AutoNavi. All Rights Reserved.
 
 
+## Bugly
+
+Copyright 2015 tencent.com. All rights reserved.
+
+
 ## Reveal-iOS-SDK
 
 # REVEAL LICENSE AGREEMENT v1.1

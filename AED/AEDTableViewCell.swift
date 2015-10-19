@@ -27,16 +27,4 @@ class AEDTableViewCell: UITableViewCell {
         specificLocationLabel.frame.size.height = 200
         specificLocationLabel.text = aed.specificLocation
     }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

@@ -32,6 +32,15 @@
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>Copyright 2015 tencent.com. All rights reserved.
+</string>
+			<key>Title</key>
+			<string>Bugly</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string># REVEAL LICENSE AGREEMENT v1.1
 
 ## NOTICE TO USER:

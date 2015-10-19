@@ -22,8 +22,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var directionToFindLabel: UILabel!
     
     var aed : AEDModel!
-
-
     
     override func viewDidLoad() {
         super.viewDidLoad()

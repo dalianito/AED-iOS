@@ -10,7 +10,8 @@ class ConfigurationConstants {
     // MARK: AMap
     static let AMAP_CLOUD_MAP_API_KEY = "e0fa87a5662f47c6ae06fe15e86fa6eb"
     static let AMAP_CLOUD_MAP_TABLE_ID = "561f3b2be4b02339d16c4b66"
-    static let AMAP_CLOUD_MAP_SEARCH_RADIUS_IN_METER = 2000
+    static let AMAP_CLOUD_MAP_SEARCH_RADIUS_IN_METER = 10000
+    static let AMAP_DISTANCE_FILTER_IN_METER = 50.0
     
     
     // MARK: Others

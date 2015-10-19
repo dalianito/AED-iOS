@@ -21,7 +21,6 @@ class AEDInfoTableViewCell: UITableViewCell {
     func setView() {
         floorLabel.text = aed.floor
         specificLocationLabel.text = aed.specificLocation
-        print(self.bounds)
         specificLocationLabel.frame.size.width = self.frame.width - 100.0
     }
 }
