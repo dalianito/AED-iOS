@@ -21,8 +21,10 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
     var uiScrollViewCurrentPage: NSInteger?
     var isSearching = true
     var alert: UIAlertView?
+    var currentAnnotationIndex = 0
+    var currentScrollViewPagingIndex = 0
     
-    let SEARCHING_INDICATOR_MSG = "正在搜索附近3公里内可用的AED仪器..."
+    let SEARCHING_INDICATOR_MSG = "正在搜索附近\(ConfigurationConstants.AMAP_CLOUD_MAP_SEARCH_RADIUS_IN_METER/1000)公里内可用的AED仪器..."
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -178,20 +180,30 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
             
             if poiAnnotationView == nil {
                 poiAnnotationView = AEDBuildingAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            } else {
+                poiAnnotationView!.setCustomAnnotation(annotation as! CustomAnnotation)
             }
-            
+
             return poiAnnotationView;
         }
         return nil
     }
     
     func mapView(mapView: MAMapView!, didSelectAnnotationView view: MAAnnotationView!) {
-        view.setSelected(true, animated: false)
         if view.isKindOfClass(AEDBuildingAnnotationView) {
             let aedView = view as! AEDBuildingAnnotationView
+            currentAnnotationIndex = aedView.indexNumber!
+            if currentAnnotationIndex == currentScrollViewPagingIndex {
+                return
+            }
+            
             let scrollToPoint = CGPoint(x: self.uiScrollView!.frame.width * CGFloat(aedView.indexNumber!), y: 0)
             self.uiScrollView!.contentOffset = scrollToPoint
         }
+    }
+    
+    func zoomToPointIfOutOfRange(coordinate: CLLocationCoordinate2D) {
+        
     }
     
     func zoomToFitMapAnnotations() {
@@ -294,13 +306,20 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         }
     }
     
-    func selecteNthAnnotation(var index: NSInteger) {
+    func selectNthAnnotation(var index: NSInteger) {
+        if currentAnnotationIndex == index {
+            return
+        }
         // Here adds 1 because the 0th annotation is user's location
         index += 1
         if self.mapView!.annotations.count < index + 1 {
             return
         }
+        
+        currentAnnotationIndex = index - 1
         self.mapView!.selectAnnotation(self.mapView!.annotations[index] as! MAAnnotation, animated: true)
+        
+        zoomToPointIfOutOfRange(self.mapView!.annotations[index].coordinate)
     }
     
     // MARK: - ScrollView
@@ -349,9 +368,16 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        let newPagingIndex = getScrollViewCurrentPageNumber(scrollView)
+        if newPagingIndex != currentScrollViewPagingIndex {
+            currentScrollViewPagingIndex = newPagingIndex
+            self.selectNthAnnotation(currentScrollViewPagingIndex)
+        }
+    }
+    
+    func getScrollViewCurrentPageNumber(scrollView: UIScrollView) -> NSInteger {
         let index = fabs(scrollView.contentOffset.x) / scrollView.frame.size.width
-        
-        self.selecteNthAnnotation(NSInteger(index))
+        return NSInteger(index)
     }
     
     func clearScrollView(scrollView: UIScrollView) {

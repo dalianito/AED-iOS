@@ -19,22 +19,30 @@ class AEDBuildingAnnotationView: MAAnnotationView {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         //canShowCallout = true
         if annotation.isKindOfClass(CustomAnnotation) {
-            let customAnnotation = annotation as! CustomAnnotation
-            customProperties = customAnnotation.customProperties
-            indexNumber = customAnnotation.sequenceNumber
+            setCustomAnnotation(annotation as! CustomAnnotation)
         } else {
             indexNumber = 0
-        }
-        
-        setImageWithIndex(self.indexNumber!)
+            setImageWithIndex(self.indexNumber!)
+        } 
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        indexNumber = 0
+        
+        let customAnnotation = self.annotation as! CustomAnnotation
+        indexNumber = customAnnotation.sequenceNumber
+        setImageWithIndex(self.indexNumber!)
+    }
+    
+    func setCustomAnnotation(annotation: CustomAnnotation) {
+        self.customProperties = annotation.customProperties
+        self.indexNumber = annotation.sequenceNumber
+        print("set index number to \(indexNumber)")
+        setImageWithIndex(self.indexNumber!)
     }
 
     func setImageWithIndex(index: NSInteger) {
+        print("setting image with index \(index)")
         if (index >= 0 && index < 11) {
             if (self.selected) {
                 self.image = UIImage(named: "waterBlue\(index+1)")
