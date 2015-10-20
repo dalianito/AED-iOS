@@ -39,6 +39,11 @@
 		2FBFA7781BD5EE6A00CE99DE /* jquery.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 2FBFA76B1BD5EE6A00CE99DE /* jquery.min.js */; settings = {ASSET_TAGS = (); }; };
 		2FBFA7791BD5EE6A00CE99DE /* npm.js in Resources */ = {isa = PBXBuildFile; fileRef = 2FBFA76C1BD5EE6A00CE99DE /* npm.js */; settings = {ASSET_TAGS = (); }; };
 		2FBFA77B1BD5EE7200CE99DE /* HowToCPR.html in Resources */ = {isa = PBXBuildFile; fileRef = 2FBFA77A1BD5EE7200CE99DE /* HowToCPR.html */; settings = {ASSET_TAGS = (); }; };
+		2FBFA78A1BD5F58A00CE99DE /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2FBFA7861BD5F58A00CE99DE /* 1.jpg */; settings = {ASSET_TAGS = (); }; };
+		2FBFA78B1BD5F58A00CE99DE /* blowani.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2FBFA7871BD5F58A00CE99DE /* blowani.gif */; settings = {ASSET_TAGS = (); }; };
+		2FBFA78C1BD5F58A00CE99DE /* handposition.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2FBFA7881BD5F58A00CE99DE /* handposition.gif */; settings = {ASSET_TAGS = (); }; };
+		2FBFA78D1BD5F58A00CE99DE /* pumpani.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2FBFA7891BD5F58A00CE99DE /* pumpani.gif */; settings = {ASSET_TAGS = (); }; };
+		2FBFA78F1BD62A5200CE99DE /* HospitalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBFA78E1BD62A5200CE99DE /* HospitalModel.swift */; settings = {ASSET_TAGS = (); }; };
 		2FC005181BD5047500C998A5 /* CPRDirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC005171BD5047500C998A5 /* CPRDirectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2FE2D93A1BC417480040229E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE2D9391BC417480040229E /* AppDelegate.swift */; };
 		2FE2D93C1BC417480040229E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE2D93B1BC417480040229E /* ViewController.swift */; };
@@ -99,6 +104,11 @@
 		2FBFA76B1BD5EE6A00CE99DE /* jquery.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
 		2FBFA76C1BD5EE6A00CE99DE /* npm.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = npm.js; sourceTree = "<group>"; };
 		2FBFA77A1BD5EE7200CE99DE /* HowToCPR.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = HowToCPR.html; sourceTree = "<group>"; };
+		2FBFA7861BD5F58A00CE99DE /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		2FBFA7871BD5F58A00CE99DE /* blowani.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = blowani.gif; sourceTree = "<group>"; };
+		2FBFA7881BD5F58A00CE99DE /* handposition.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = handposition.gif; sourceTree = "<group>"; };
+		2FBFA7891BD5F58A00CE99DE /* pumpani.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pumpani.gif; sourceTree = "<group>"; };
+		2FBFA78E1BD62A5200CE99DE /* HospitalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalModel.swift; sourceTree = "<group>"; };
 		2FC005171BD5047500C998A5 /* CPRDirectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPRDirectionViewController.swift; sourceTree = "<group>"; };
 		2FE2D9361BC417480040229E /* AED.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AED.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FE2D9391BC417480040229E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +192,7 @@
 			children = (
 				2FACBCFC1BC63AA4005F5FD4 /* BuildingModel.swift */,
 				2FACBCFE1BC63ADA005F5FD4 /* AEDModel.swift */,
+				2FBFA78E1BD62A5200CE99DE /* HospitalModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -189,7 +200,7 @@
 		2FBFA75A1BD5EE6A00CE99DE /* assets */ = {
 			isa = PBXGroup;
 			children = (
-				2FBFA77C1BD5F17C00CE99DE /* img */,
+				2FBFA7851BD5F58A00CE99DE /* img */,
 				2FBFA75B1BD5EE6A00CE99DE /* css */,
 				2FBFA7621BD5EE6A00CE99DE /* fonts */,
 				2FBFA7681BD5EE6A00CE99DE /* js */,
@@ -233,11 +244,15 @@
 			path = js;
 			sourceTree = "<group>";
 		};
-		2FBFA77C1BD5F17C00CE99DE /* img */ = {
+		2FBFA7851BD5F58A00CE99DE /* img */ = {
 			isa = PBXGroup;
 			children = (
+				2FBFA7861BD5F58A00CE99DE /* 1.jpg */,
+				2FBFA7871BD5F58A00CE99DE /* blowani.gif */,
+				2FBFA7881BD5F58A00CE99DE /* handposition.gif */,
+				2FBFA7891BD5F58A00CE99DE /* pumpani.gif */,
 			);
-			name = img;
+			path = img;
 			sourceTree = "<group>";
 		};
 		2FC005191BD5059F00C998A5 /* htmls */ = {
@@ -425,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FBFA7791BD5EE6A00CE99DE /* npm.js in Resources */,
+				2FBFA78A1BD5F58A00CE99DE /* 1.jpg in Resources */,
 				2FBFA7751BD5EE6A00CE99DE /* glyphicons-halflings-regular.woff2 in Resources */,
 				2FBFA77B1BD5EE7200CE99DE /* HowToCPR.html in Resources */,
 				2FBFA7701BD5EE6A00CE99DE /* bootstrap.min.css in Resources */,
@@ -432,8 +448,11 @@
 				2FE2D9441BC417480040229E /* LaunchScreen.storyboard in Resources */,
 				2FBFA7741BD5EE6A00CE99DE /* glyphicons-halflings-regular.woff in Resources */,
 				2FBFA7731BD5EE6A00CE99DE /* glyphicons-halflings-regular.ttf in Resources */,
+				2FBFA78C1BD5F58A00CE99DE /* handposition.gif in Resources */,
 				2FE508181BC80C0700020239 /* initAEDData.json in Resources */,
+				2FBFA78D1BD5F58A00CE99DE /* pumpani.gif in Resources */,
 				2FBFA7761BD5EE6A00CE99DE /* bootstrap.js in Resources */,
+				2FBFA78B1BD5F58A00CE99DE /* blowani.gif in Resources */,
 				2FBFA7721BD5EE6A00CE99DE /* glyphicons-halflings-regular.svg in Resources */,
 				2FE2D9411BC417480040229E /* Assets.xcassets in Resources */,
 				2FBFA7781BD5EE6A00CE99DE /* jquery.min.js in Resources */,
@@ -514,6 +533,7 @@
 				2F8F4C361BD13C5A00A2F198 /* BottomTabBarController.swift in Sources */,
 				2FAB55A11BC78F940048F028 /* AEDMO.swift in Sources */,
 				2FAB559C1BC78F070048F028 /* BuildingMO.swift in Sources */,
+				2FBFA78F1BD62A5200CE99DE /* HospitalModel.swift in Sources */,
 				2FF112761BC7FD3C00E3449F /* AEDDAO.swift in Sources */,
 				2F1617F91BCF434A002E178E /* AEDTableViewCell.swift in Sources */,
 				2F3EF6BA1BCB859F00754820 /* BuildingLocationsMapViewController.swift in Sources */,

@@ -125,28 +125,9 @@
                     <view key="view" contentMode="scaleToFill" id="OtL-tj-ViK">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ooD-VD-LO2">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <dataDetectorType key="dataDetectorTypes"/>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="ooD-VD-LO2" firstAttribute="width" secondItem="OtL-tj-ViK" secondAttribute="width" id="Fub-oK-l8l"/>
-                            <constraint firstItem="ooD-VD-LO2" firstAttribute="bottom" secondItem="OtL-tj-ViK" secondAttribute="bottomMargin" id="JQX-qj-x9f"/>
-                            <constraint firstItem="ooD-VD-LO2" firstAttribute="centerY" secondItem="OtL-tj-ViK" secondAttribute="centerY" id="NKz-c4-epO"/>
-                            <constraint firstItem="ooD-VD-LO2" firstAttribute="leading" secondItem="OtL-tj-ViK" secondAttribute="leadingMargin" constant="-20" id="atL-l1-H2e"/>
-                            <constraint firstItem="ooD-VD-LO2" firstAttribute="top" secondItem="OtL-tj-ViK" secondAttribute="topMargin" id="hJH-mF-lyX"/>
-                            <constraint firstItem="ooD-VD-LO2" firstAttribute="centerX" secondItem="OtL-tj-ViK" secondAttribute="centerX" id="nkD-YU-dE8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ooD-VD-LO2" secondAttribute="trailing" constant="-20" id="zQp-7f-Cc9"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="急救指南" id="paq-qT-zRw"/>
-                    <connections>
-                        <outlet property="webView" destination="ooD-VD-LO2" id="bJA-eN-LV1"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thb-gb-2xX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -179,13 +160,13 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YY2-lB-hfu">
+                                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YY2-lB-hfu">
                                         <rect key="frame" x="59" y="14" width="533" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqk-So-iBb">
+                                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqk-So-iBb">
                                         <rect key="frame" x="59" y="45" width="533" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -195,12 +176,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="ZPD-Fb-Ybg" firstAttribute="top" secondItem="sZ2-4M-HAB" secondAttribute="top" constant="14" id="1Nz-tg-1Wb"/>
+                                    <constraint firstItem="Oqk-So-iBb" firstAttribute="top" secondItem="YY2-lB-hfu" secondAttribute="bottom" constant="11" id="53k-P8-wJM"/>
                                     <constraint firstItem="YY2-lB-hfu" firstAttribute="height" secondItem="ZPD-Fb-Ybg" secondAttribute="height" id="5GG-Wo-5VI"/>
                                     <constraint firstItem="Oqk-So-iBb" firstAttribute="leading" secondItem="uHs-wx-IgL" secondAttribute="trailing" constant="3" id="CC6-YM-OtT"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="YY2-lB-hfu" secondAttribute="trailing" id="KYB-Py-IB9"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="Oqk-So-iBb" secondAttribute="trailing" id="YsA-Ap-jKG"/>
                                     <constraint firstItem="YY2-lB-hfu" firstAttribute="leading" secondItem="ZPD-Fb-Ybg" secondAttribute="trailing" constant="3" id="mxE-WC-Euf"/>
-                                    <constraint firstItem="uHs-wx-IgL" firstAttribute="top" secondItem="ZPD-Fb-Ybg" secondAttribute="bottom" id="wqQ-c2-5M0"/>
+                                    <constraint firstItem="uHs-wx-IgL" firstAttribute="top" secondItem="ZPD-Fb-Ybg" secondAttribute="bottom" constant="11" id="wqQ-c2-5M0"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OEs-n0-RBe">
@@ -263,7 +245,7 @@
                             <constraint firstItem="OEs-n0-RBe" firstAttribute="width" secondItem="EoC-08-v8j" secondAttribute="width" id="XPB-Vb-pgp"/>
                             <constraint firstAttribute="trailing" secondItem="sZ2-4M-HAB" secondAttribute="trailing" id="YUp-9v-AUn"/>
                             <constraint firstItem="OEs-n0-RBe" firstAttribute="leading" secondItem="EoC-08-v8j" secondAttribute="leading" id="jri-BF-Wkf"/>
-                            <constraint firstItem="OEs-n0-RBe" firstAttribute="top" secondItem="sZ2-4M-HAB" secondAttribute="bottom" constant="10" id="s1h-iR-4kK"/>
+                            <constraint firstItem="OEs-n0-RBe" firstAttribute="top" secondItem="sZ2-4M-HAB" secondAttribute="bottom" constant="30" id="s1h-iR-4kK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="BuildingName" id="0eQ-Zt-6hs">
@@ -703,7 +685,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="aedIcon" width="30" height="30"/>
+        <image name="aedIcon" width="427" height="433"/>
         <image name="defaultPhoto" width="320" height="320"/>
         <image name="mapIcon" width="26" height="26"/>
     </resources>

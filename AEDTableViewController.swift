@@ -67,7 +67,6 @@ class AEDTableViewController: UITableViewController, MAMapViewDelegate, AMapClou
             self.refreshControl?.endRefreshing()
             return
         }
-        print("Refreshing AED list with coordinate \(userLastLocationCoordinate2D)")
         
         let radius =  5000 // 5 KM
         let latitude = Double(userLastLocationCoordinate2D!.latitude)

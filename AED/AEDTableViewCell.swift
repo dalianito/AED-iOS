@@ -21,7 +21,6 @@ class AEDTableViewCell: UITableViewCell {
         floorLabel.text = aed.floor
         
         specificLocationLabel.frame.size.width = self.frame.width - 100.0
-        print(specificLocationLabel.frame)
         specificLocationLabel.numberOfLines = 10
         
         specificLocationLabel.frame.size.height = 200

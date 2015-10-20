@@ -17,7 +17,7 @@ class AEDBuildingAnnotationView: MAAnnotationView {
     
     override init!(annotation: MAAnnotation!, reuseIdentifier: String!) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        //canShowCallout = true
+
         if annotation.isKindOfClass(CustomAnnotation) {
             setCustomAnnotation(annotation as! CustomAnnotation)
         } else {
@@ -37,12 +37,10 @@ class AEDBuildingAnnotationView: MAAnnotationView {
     func setCustomAnnotation(annotation: CustomAnnotation) {
         self.customProperties = annotation.customProperties
         self.indexNumber = annotation.sequenceNumber
-        print("set index number to \(indexNumber)")
         setImageWithIndex(self.indexNumber!)
     }
 
     func setImageWithIndex(index: NSInteger) {
-        print("setting image with index \(index)")
         if (index >= 0 && index < 11) {
             if (self.selected) {
                 self.image = UIImage(named: "waterBlue\(index+1)")

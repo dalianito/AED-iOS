@@ -18,6 +18,9 @@ class BuildingInfoViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        addGestureRecognation()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -44,9 +47,34 @@ class BuildingInfoViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
+    // MARK: - Action
     @IBAction func backToMapView(sender: UIBarButtonItem) {
+        closeCurrentView()
+    }
+    
+    
+    // MARK: - Gesture and Navigation
+    
+    func addGestureRecognation() {
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(swipeRight)
+    }
+    
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.Right:
+                closeCurrentView()
+            default:
+                break
+            }
+        }
+    }
+    
+    func closeCurrentView() {
         navigationController!.setNavigationBarHidden(true, animated: false)
         navigationController!.popViewControllerAnimated(true)
-        
     }
 }

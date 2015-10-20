@@ -16,4 +16,7 @@ class ConfigurationConstants {
     
     // MARK: Others
     static let EMERGENCY_CENTER_PHONE_NUMBER = 120
+    
+    
+    static let EMPTY_PROPERTY_STR = "无信息"
 }

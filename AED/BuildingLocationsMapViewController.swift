@@ -23,6 +23,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
     var alert: UIAlertView?
     var currentAnnotationIndex = 0
     var currentScrollViewPagingIndex = 0
+    var forceToRefreshAEDList = false
     
     let SEARCHING_INDICATOR_MSG = "正在搜索附近\(ConfigurationConstants.AMAP_CLOUD_MAP_SEARCH_RADIUS_IN_METER/1000)公里内可用的AED仪器..."
     
@@ -95,6 +96,11 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
             return
         }
         
+        if forceToRefreshAEDList {
+            forceToRefreshAEDList = false
+            refreshAEDList()
+        }
+        
         if (updatingLocation && isNewCoordinate(userLocation.coordinate)) || sortedBuildingList == nil || sortedBuildingList!.isEmpty{
             refreshAEDList()
         }
@@ -150,23 +156,26 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
     
     func requestNewUserLocation(sender: UIButton) {
         isSearching = true
+        forceToRefreshAEDList = true
         alert!.show()
     }
 
     
     func onCloudPlaceAroundSearchDone(request:AMapCloudPlaceAroundSearchRequest, response:AMapCloudSearchResponse)
     {
+        print("search done")
         if isSearching {
             self.alert?.dismissWithClickedButtonIndex(0, animated: true)
             isSearching = false
         }
         updateAvailableBuildings(response.POIs as! [AMapCloudPOI])
-        //zoomToFitMapAnnotations()
+        zoomToFitMapAnnotations((0...response.POIs.count).map{$0})
         updateScrollView()
     }
 
     func cloudRequest(cloudSearchRequest: AnyObject!, error: NSError!) {
-        let alert = UIAlertController(title: "", message: "请求失败！原因：\(error.localizedDescription) 请拨打120急救！", preferredStyle: UIAlertControllerStyle.Alert)
+        self.alert?.dismissWithClickedButtonIndex(0, animated: false)
+        let alert = UIAlertController(title: "", message: "请求失败，请重试！原因：\(error.localizedDescription) 请拨打120急救！", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
@@ -202,11 +211,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         }
     }
     
-    func zoomToPointIfOutOfRange(coordinate: CLLocationCoordinate2D) {
-        
-    }
-    
-    func zoomToFitMapAnnotations() {
+    func zoomToFitMapAnnotations(indice: [NSInteger]) {
         if mapView!.annotations.count == 0 {
             return
         }
@@ -215,28 +220,50 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         
         var bottomRightCoord = CLLocationCoordinate2D(latitude: 90, longitude: -180)
 
-        if sortedBuildingList != nil && sortedBuildingList?.isEmpty == false {
-            for index in 0...min(MAX_NO_OF_BUILDINGS_TO_DISPLAY, sortedBuildingList!.count-1) {
-                let coordinate = sortedBuildingList![index].coordinate
-                topLeftCoord.longitude = fmin(topLeftCoord.longitude, coordinate.longitude)
-                topLeftCoord.latitude = fmax(topLeftCoord.latitude, coordinate.latitude)
-                bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, coordinate.longitude)
-                bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, coordinate.latitude)
+        var doesRequireZooming = false
+        for index in indice {
+            if (index >= self.mapView!.annotations.count) {
+                continue
             }
+            
+            let coordinate = self.mapView!.annotations[index].coordinate
+            if isInRegion(self.mapView!, targetPoint: coordinate)  == false{
+                doesRequireZooming = true
+            }
+            
+            topLeftCoord.longitude = fmin(topLeftCoord.longitude, coordinate.longitude)
+            topLeftCoord.latitude = fmax(topLeftCoord.latitude, coordinate.latitude)
+            bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, coordinate.longitude)
+            bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, coordinate.latitude)
         }
-        let annotation = mapView!.userLocation
-        topLeftCoord.longitude = fmin(topLeftCoord.longitude, annotation.coordinate.longitude)
-        topLeftCoord.latitude = fmax(topLeftCoord.latitude, annotation.coordinate.latitude)
-        bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, annotation.coordinate.longitude)
-        bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, annotation.coordinate.latitude)
+        
+        if doesRequireZooming == false {
+            return
+        }
         
         var region = MACoordinateRegion()
         region.center.latitude = topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5
         region.center.longitude = topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5
-        region.span.latitudeDelta = fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * 1.2
-        region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.2
-        
+        region.span.latitudeDelta = fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * 1.3
+        region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.3
+        print(region)
         mapView!.setRegion(region, animated: false)
+    }
+    
+    func isInRegion(mapView: MAMapView, targetPoint: CLLocationCoordinate2D) -> Bool {
+    
+        let latitudeDiff = mapView.region.span.latitudeDelta/2
+        let longitudeDiff = mapView.region.span.longitudeDelta/2
+        let center = mapView.region.center
+        
+        if targetPoint.latitude < center.latitude - latitudeDiff
+            || targetPoint.latitude > center.latitude + latitudeDiff
+            || targetPoint.longitude < center.longitude - longitudeDiff
+            || targetPoint.longitude > center.longitude + longitudeDiff {
+            return false
+        } else {
+            return true
+        }
     }
     
     func updateAvailableBuildings(pois: [AMapCloudPOI]) {
@@ -260,6 +287,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
                 building.distance = poi.distance
                 building.coordinate = CLLocationCoordinate2DMake(Double(poi.location.latitude), Double(poi.location.longitude))
                 building.buildingID = buildingID
+                building.phone = customFields["telephone"] as? String
             } else {
                 building = availableBuildings[buildingID]!
             }
@@ -298,6 +326,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         mapView!.selectAnnotation(firstAnnotation, animated: false)
     }
     
+    
     func clearMapViewAnnotations(mapView: MAMapView) {
         for annotation in mapView.annotations {
             if annotation.isKindOfClass(CustomAnnotation) {
@@ -319,7 +348,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         currentAnnotationIndex = index - 1
         self.mapView!.selectAnnotation(self.mapView!.annotations[index] as! MAAnnotation, animated: true)
         
-        zoomToPointIfOutOfRange(self.mapView!.annotations[index].coordinate)
+        zoomToFitMapAnnotations([0, index])
     }
     
     // MARK: - ScrollView
@@ -334,7 +363,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         for i in 1...(noOfAnnotations-1) {
             
             let uiView = UIView(frame: CGRectMake(CGFloat(i-1)*self.uiScrollView!.frame.size.width, 0, self.uiScrollView!.frame.size.width, self.uiScrollView!.frame.size.height))
-            uiView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.8)
+            uiView.backgroundColor = UIColor.whiteColor()
             
             let annotation = self.mapView!.annotations[i] as! CustomAnnotation
             let buildingNameLabel = UILabel(frame: CGRectMake(5, 5, uiView.frame.size.width-50, uiView.frame.size.height/2))
@@ -347,11 +376,9 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
             uiView.addSubview(detailsLabel)
             
             
-            let detailsButton = UIButton(frame: CGRectMake(uiView.frame.size.width - 45, (uiView.frame.size.height-15)/2, 40, 15))
+            let detailsButton = UIButton(frame: CGRectMake(uiView.frame.size.width - 45, 0, 50, self.uiScrollView!.frame.height))
             
-            detailsButton.setTitle("详情", forState: UIControlState.Normal)
-            detailsButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
-            detailsButton.titleLabel!.adjustsFontSizeToFitWidth = true
+            detailsButton.setImage(UIImage(named: "detailsBtn"), forState: UIControlState.Normal)
             detailsButton.tag = i
             detailsButton.addTarget(self, action: "triggerShowDetailsView:", forControlEvents: UIControlEvents.TouchUpInside)
 
