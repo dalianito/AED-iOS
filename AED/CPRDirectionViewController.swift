@@ -24,7 +24,7 @@ class CPRDirectionViewController: UIViewController {
     func loadCPRDirectionLocally() {
         webView = WKWebView(frame: CGRectMake(0, self.navigationController!.navigationBar.frame.height, self.view.frame.width, self.view.frame.height - self.navigationController!.navigationBar.frame.height - self.tabBarController!.tabBar.frame.height))
         
-        var filePath = NSBundle.mainBundle().pathForResource("HowToCPR", ofType: "html")
+        let filePath = NSBundle.mainBundle().pathForResource("HowToCPR", ofType: "html")
         let url = NSURL(fileURLWithPath: filePath!)
         let request = NSURLRequest(URL: url)
     

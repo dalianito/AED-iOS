@@ -25,6 +25,7 @@
 		2FACBCFD1BC63AA4005F5FD4 /* BuildingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FACBCFC1BC63AA4005F5FD4 /* BuildingModel.swift */; settings = {ASSET_TAGS = (); }; };
 		2FACBCFF1BC63ADA005F5FD4 /* AEDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FACBCFE1BC63ADA005F5FD4 /* AEDModel.swift */; settings = {ASSET_TAGS = (); }; };
 		2FACBD011BC6424C005F5FD4 /* AEDInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FACBD001BC6424C005F5FD4 /* AEDInfoTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		2FB846E91BD756810044FB00 /* ITOMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB846E81BD756810044FB00 /* ITOMapView.swift */; settings = {ASSET_TAGS = (); }; };
 		2FBFA76D1BD5EE6A00CE99DE /* bootstrap-theme.css in Resources */ = {isa = PBXBuildFile; fileRef = 2FBFA75C1BD5EE6A00CE99DE /* bootstrap-theme.css */; settings = {ASSET_TAGS = (); }; };
 		2FBFA76E1BD5EE6A00CE99DE /* bootstrap-theme.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 2FBFA75E1BD5EE6A00CE99DE /* bootstrap-theme.min.css */; settings = {ASSET_TAGS = (); }; };
 		2FBFA76F1BD5EE6A00CE99DE /* bootstrap.css in Resources */ = {isa = PBXBuildFile; fileRef = 2FBFA75F1BD5EE6A00CE99DE /* bootstrap.css */; settings = {ASSET_TAGS = (); }; };
@@ -88,6 +89,7 @@
 		2FACBCFC1BC63AA4005F5FD4 /* BuildingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingModel.swift; sourceTree = "<group>"; };
 		2FACBCFE1BC63ADA005F5FD4 /* AEDModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AEDModel.swift; sourceTree = "<group>"; };
 		2FACBD001BC6424C005F5FD4 /* AEDInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AEDInfoTableViewCell.swift; sourceTree = "<group>"; };
+		2FB846E81BD756810044FB00 /* ITOMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITOMapView.swift; sourceTree = "<group>"; };
 		2FBFA75C1BD5EE6A00CE99DE /* bootstrap-theme.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "bootstrap-theme.css"; sourceTree = "<group>"; };
 		2FBFA75D1BD5EE6A00CE99DE /* bootstrap-theme.css.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = "bootstrap-theme.css.map"; sourceTree = "<group>"; };
 		2FBFA75E1BD5EE6A00CE99DE /* bootstrap-theme.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "bootstrap-theme.min.css"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				2F1617F61BCF363E002E178E /* CustomAnnotation.swift */,
 				2F4474081BCDE21200692CD7 /* AEDBuildingAnnotationView.swift */,
 				2F44740A1BCDE96000692CD7 /* BuildingCalloutCell.swift */,
+				2FB846E81BD756810044FB00 /* ITOMapView.swift */,
 			);
 			name = AMapUtils;
 			sourceTree = "<group>";
@@ -195,6 +198,13 @@
 				2FBFA78E1BD62A5200CE99DE /* HospitalModel.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		2FB846E71BD71EF20044FB00 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Control;
 			sourceTree = "<group>";
 		};
 		2FBFA75A1BD5EE6A00CE99DE /* assets */ = {
@@ -287,6 +297,7 @@
 		2FE2D9381BC417480040229E /* AED */ = {
 			isa = PBXGroup;
 			children = (
+				2FB846E71BD71EF20044FB00 /* Control */,
 				2FC005191BD5059F00C998A5 /* htmls */,
 				2F8F4C381BD13C7F00A2F198 /* AMapUtils */,
 				2F8F4C371BD13C6400A2F198 /* ControlUtils */,
@@ -529,6 +540,7 @@
 				2FAB55A01BC78F940048F028 /* AEDMO+CoreDataProperties.swift in Sources */,
 				2FACBD011BC6424C005F5FD4 /* AEDInfoTableViewCell.swift in Sources */,
 				2FF112741BC7A4E900E3449F /* BuildingDAO.swift in Sources */,
+				2FB846E91BD756810044FB00 /* ITOMapView.swift in Sources */,
 				2FF112791BC8097C00E3449F /* SwiftyJSON.swift in Sources */,
 				2F8F4C361BD13C5A00A2F198 /* BottomTabBarController.swift in Sources */,
 				2FAB55A11BC78F940048F028 /* AEDMO.swift in Sources */,

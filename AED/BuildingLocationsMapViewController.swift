@@ -163,7 +163,6 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
     
     func onCloudPlaceAroundSearchDone(request:AMapCloudPlaceAroundSearchRequest, response:AMapCloudSearchResponse)
     {
-        print("search done")
         if isSearching {
             self.alert?.dismissWithClickedButtonIndex(0, animated: true)
             isSearching = false
@@ -246,7 +245,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         region.center.longitude = topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5
         region.span.latitudeDelta = fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * 1.3
         region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.3
-        print(region)
+        
         mapView!.setRegion(region, animated: false)
     }
     

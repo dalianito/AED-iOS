@@ -95,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="2827" y="1608"/>
         </scene>
-        <!--心血管医院-->
+        <!--心血管病医院-->
         <scene sceneID="vcs-s2-6z3">
             <objects>
-                <viewController title="心血管医院" id="KbD-8h-Eyx" sceneMemberID="viewController">
+                <viewController title="心血管病医院" id="KbD-8h-Eyx" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pGW-tz-KGa"/>
                         <viewControllerLayoutGuide type="bottom" id="vVR-hc-V2A"/>
@@ -108,7 +108,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="心血管医院" id="OwS-d4-Ntq"/>
+                    <navigationItem key="navigationItem" title="心血管病医院" id="OwS-d4-Ntq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="voO-CK-TGG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -668,7 +668,7 @@
         <scene sceneID="kvh-zY-DU0">
             <objects>
                 <navigationController title="心血管医院" automaticallyAdjustsScrollViewInsets="NO" id="l6Z-Ee-F7u" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="心血管医院" id="D1u-zH-73f"/>
+                    <tabBarItem key="tabBarItem" title="心血管病医院" id="D1u-zH-73f"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uWx-XI-buh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
