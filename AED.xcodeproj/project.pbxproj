@@ -10,6 +10,7 @@
 		2F1617F51BCF2D10002E178E /* BuildingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1617F41BCF2D10002E178E /* BuildingInfoViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2F1617F71BCF363E002E178E /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1617F61BCF363E002E178E /* CustomAnnotation.swift */; settings = {ASSET_TAGS = (); }; };
 		2F1617F91BCF434A002E178E /* AEDTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1617F81BCF434A002E178E /* AEDTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		2F2192061BD8688B000472CA /* HospitalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2192051BD8688B000472CA /* HospitalInfoViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2F3EF6B81BCB83E900754820 /* ConfigurationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EF6B71BCB83E900754820 /* ConfigurationConstants.swift */; settings = {ASSET_TAGS = (); }; };
 		2F3EF6BA1BCB859F00754820 /* BuildingLocationsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EF6B91BCB859F00754820 /* BuildingLocationsMapViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2F3EF6BD1BCBCA1900754820 /* BuildingTableViewSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EF6BB1BCBCA1900754820 /* BuildingTableViewSectionCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -26,6 +27,9 @@
 		2FACBCFF1BC63ADA005F5FD4 /* AEDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FACBCFE1BC63ADA005F5FD4 /* AEDModel.swift */; settings = {ASSET_TAGS = (); }; };
 		2FACBD011BC6424C005F5FD4 /* AEDInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FACBD001BC6424C005F5FD4 /* AEDInfoTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		2FB846E91BD756810044FB00 /* ITOMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB846E81BD756810044FB00 /* ITOMapView.swift */; settings = {ASSET_TAGS = (); }; };
+		2FB846EB1BD76AA70044FB00 /* VolunteersMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB846EA1BD76AA70044FB00 /* VolunteersMapViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		2FB846EE1BD7714C0044FB00 /* HospitalsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB846ED1BD7714C0044FB00 /* HospitalsMapViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		2FB846F01BD7AC130044FB00 /* HospitalAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB846EF1BD7AC130044FB00 /* HospitalAnnotationView.swift */; settings = {ASSET_TAGS = (); }; };
 		2FBFA76D1BD5EE6A00CE99DE /* bootstrap-theme.css in Resources */ = {isa = PBXBuildFile; fileRef = 2FBFA75C1BD5EE6A00CE99DE /* bootstrap-theme.css */; settings = {ASSET_TAGS = (); }; };
 		2FBFA76E1BD5EE6A00CE99DE /* bootstrap-theme.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 2FBFA75E1BD5EE6A00CE99DE /* bootstrap-theme.min.css */; settings = {ASSET_TAGS = (); }; };
 		2FBFA76F1BD5EE6A00CE99DE /* bootstrap.css in Resources */ = {isa = PBXBuildFile; fileRef = 2FBFA75F1BD5EE6A00CE99DE /* bootstrap.css */; settings = {ASSET_TAGS = (); }; };
@@ -74,6 +78,7 @@
 		2F1617F41BCF2D10002E178E /* BuildingInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingInfoViewController.swift; sourceTree = "<group>"; };
 		2F1617F61BCF363E002E178E /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		2F1617F81BCF434A002E178E /* AEDTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AEDTableViewCell.swift; sourceTree = "<group>"; };
+		2F2192051BD8688B000472CA /* HospitalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalInfoViewController.swift; sourceTree = "<group>"; };
 		2F3EF6B71BCB83E900754820 /* ConfigurationConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationConstants.swift; sourceTree = "<group>"; };
 		2F3EF6B91BCB859F00754820 /* BuildingLocationsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingLocationsMapViewController.swift; sourceTree = "<group>"; };
 		2F3EF6BB1BCBCA1900754820 /* BuildingTableViewSectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingTableViewSectionCell.swift; sourceTree = "<group>"; };
@@ -90,6 +95,9 @@
 		2FACBCFE1BC63ADA005F5FD4 /* AEDModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AEDModel.swift; sourceTree = "<group>"; };
 		2FACBD001BC6424C005F5FD4 /* AEDInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AEDInfoTableViewCell.swift; sourceTree = "<group>"; };
 		2FB846E81BD756810044FB00 /* ITOMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITOMapView.swift; sourceTree = "<group>"; };
+		2FB846EA1BD76AA70044FB00 /* VolunteersMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolunteersMapViewController.swift; sourceTree = "<group>"; };
+		2FB846ED1BD7714C0044FB00 /* HospitalsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalsMapViewController.swift; sourceTree = "<group>"; };
+		2FB846EF1BD7AC130044FB00 /* HospitalAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalAnnotationView.swift; sourceTree = "<group>"; };
 		2FBFA75C1BD5EE6A00CE99DE /* bootstrap-theme.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "bootstrap-theme.css"; sourceTree = "<group>"; };
 		2FBFA75D1BD5EE6A00CE99DE /* bootstrap-theme.css.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = "bootstrap-theme.css.map"; sourceTree = "<group>"; };
 		2FBFA75E1BD5EE6A00CE99DE /* bootstrap-theme.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "bootstrap-theme.min.css"; sourceTree = "<group>"; };
@@ -172,6 +180,7 @@
 			children = (
 				2F1617F61BCF363E002E178E /* CustomAnnotation.swift */,
 				2F4474081BCDE21200692CD7 /* AEDBuildingAnnotationView.swift */,
+				2FB846EF1BD7AC130044FB00 /* HospitalAnnotationView.swift */,
 				2F44740A1BCDE96000692CD7 /* BuildingCalloutCell.swift */,
 				2FB846E81BD756810044FB00 /* ITOMapView.swift */,
 			);
@@ -205,6 +214,16 @@
 			children = (
 			);
 			name = Control;
+			sourceTree = "<group>";
+		};
+		2FB846EC1BD76AB40044FB00 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2FB846EA1BD76AA70044FB00 /* VolunteersMapViewController.swift */,
+				2F3EF6B91BCB859F00754820 /* BuildingLocationsMapViewController.swift */,
+				2FB846ED1BD7714C0044FB00 /* HospitalsMapViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		2FBFA75A1BD5EE6A00CE99DE /* assets */ = {
@@ -297,6 +316,7 @@
 		2FE2D9381BC417480040229E /* AED */ = {
 			isa = PBXGroup;
 			children = (
+				2FB846EC1BD76AB40044FB00 /* ViewControllers */,
 				2FB846E71BD71EF20044FB00 /* Control */,
 				2FC005191BD5059F00C998A5 /* htmls */,
 				2F8F4C381BD13C7F00A2F198 /* AMapUtils */,
@@ -313,9 +333,9 @@
 				2FE2D9391BC417480040229E /* AppDelegate.swift */,
 				2FE2D93B1BC417480040229E /* ViewController.swift */,
 				2FE2D93D1BC417480040229E /* Main.storyboard */,
+				2F2192051BD8688B000472CA /* HospitalInfoViewController.swift */,
 				2FC005171BD5047500C998A5 /* CPRDirectionViewController.swift */,
 				2F1617F41BCF2D10002E178E /* BuildingInfoViewController.swift */,
-				2F3EF6B91BCB859F00754820 /* BuildingLocationsMapViewController.swift */,
 				2FE2D9401BC417480040229E /* Assets.xcassets */,
 				2FE2D9421BC417480040229E /* LaunchScreen.storyboard */,
 				2FE2D9451BC417480040229E /* Info.plist */,
@@ -546,6 +566,7 @@
 				2FAB55A11BC78F940048F028 /* AEDMO.swift in Sources */,
 				2FAB559C1BC78F070048F028 /* BuildingMO.swift in Sources */,
 				2FBFA78F1BD62A5200CE99DE /* HospitalModel.swift in Sources */,
+				2FB846EE1BD7714C0044FB00 /* HospitalsMapViewController.swift in Sources */,
 				2FF112761BC7FD3C00E3449F /* AEDDAO.swift in Sources */,
 				2F1617F91BCF434A002E178E /* AEDTableViewCell.swift in Sources */,
 				2F3EF6BA1BCB859F00754820 /* BuildingLocationsMapViewController.swift in Sources */,
@@ -556,10 +577,13 @@
 				2FAB558C1BC7744D0048F028 /* Model.xcdatamodeld in Sources */,
 				2FE2D93A1BC417480040229E /* AppDelegate.swift in Sources */,
 				2F3EF6B81BCB83E900754820 /* ConfigurationConstants.swift in Sources */,
+				2F2192061BD8688B000472CA /* HospitalInfoViewController.swift in Sources */,
 				2FACBCFD1BC63AA4005F5FD4 /* BuildingModel.swift in Sources */,
+				2FB846EB1BD76AA70044FB00 /* VolunteersMapViewController.swift in Sources */,
 				2F4474091BCDE21200692CD7 /* AEDBuildingAnnotationView.swift in Sources */,
 				2F3EF6BD1BCBCA1900754820 /* BuildingTableViewSectionCell.swift in Sources */,
 				2F1617F71BCF363E002E178E /* CustomAnnotation.swift in Sources */,
+				2FB846F01BD7AC130044FB00 /* HospitalAnnotationView.swift in Sources */,
 				2FACBCFF1BC63ADA005F5FD4 /* AEDModel.swift in Sources */,
 				2F44740B1BCDE96000692CD7 /* BuildingCalloutCell.swift in Sources */,
 				2F1617F51BCF2D10002E178E /* BuildingInfoViewController.swift in Sources */,

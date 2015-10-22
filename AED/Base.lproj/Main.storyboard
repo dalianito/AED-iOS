@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--AED Map View-->
+        <!--寻找AED-->
         <scene sceneID="cyQ-Zk-yYN">
             <objects>
-                <viewController title="AED Map View" id="Jai-JO-p6e" customClass="BuildingLocationsMapViewController" customModule="AED" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="寻找AED" id="Jai-JO-p6e" customClass="BuildingLocationsMapViewController" customModule="AED" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Gv-U0-0Vf"/>
                         <viewControllerLayoutGuide type="bottom" id="ENV-zG-ujd"/>
@@ -20,8 +20,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="寻找AED" id="79y-PX-ZJf"/>
-                    <navigationItem key="navigationItem" id="zBt-35-QTe"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" title="附近的AED" id="zBt-35-QTe"/>
                     <connections>
                         <segue destination="27w-IL-6V5" kind="show" identifier="ShowBuildingInfoSegue" id="DBW-jE-Y5Q"/>
                     </connections>
@@ -79,7 +78,7 @@
         <!--附近志愿者-->
         <scene sceneID="0VQ-dj-cwc">
             <objects>
-                <viewController title="附近志愿者" id="LQY-HG-tgo" sceneMemberID="viewController">
+                <viewController title="附近志愿者" id="LQY-HG-tgo" customClass="VolunteersMapViewController" customModule="AED" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2hC-bN-0eQ"/>
                         <viewControllerLayoutGuide type="bottom" id="jZh-BB-6cV"/>
@@ -98,7 +97,7 @@
         <!--心血管病医院-->
         <scene sceneID="vcs-s2-6z3">
             <objects>
-                <viewController title="心血管病医院" id="KbD-8h-Eyx" sceneMemberID="viewController">
+                <viewController title="心血管病医院" id="KbD-8h-Eyx" customClass="HospitalsMapViewController" customModule="AED" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pGW-tz-KGa"/>
                         <viewControllerLayoutGuide type="bottom" id="vVR-hc-V2A"/>
@@ -109,10 +108,86 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="心血管病医院" id="OwS-d4-Ntq"/>
+                    <connections>
+                        <segue destination="H1F-eB-kG1" kind="show" identifier="ShowHospitalInfoSegue" id="4rY-Ix-un3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="voO-CK-TGG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2885" y="2811"/>
+        </scene>
+        <!--Hospital Info View Controller-->
+        <scene sceneID="fxj-cS-lVW">
+            <objects>
+                <viewController id="H1F-eB-kG1" customClass="HospitalInfoViewController" customModule="AED" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mbH-gV-SdR"/>
+                        <viewControllerLayoutGuide type="bottom" id="mkS-x1-2D0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IBT-sS-d1n">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvO-7W-Q24">
+                                <rect key="frame" x="20" y="72" width="560" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WnT-aP-FXP">
+                                <rect key="frame" x="20" y="122.5" width="560" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCS-l3-muR">
+                                <rect key="frame" x="20" y="148.5" width="560" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xsp-qt-m0W">
+                                <rect key="frame" x="20" y="98.5" width="560" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.020100812990000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Xsp-qt-m0W" firstAttribute="top" secondItem="nvO-7W-Q24" secondAttribute="bottom" constant="3.5" id="5sw-b5-YQz"/>
+                            <constraint firstItem="nvO-7W-Q24" firstAttribute="top" secondItem="mbH-gV-SdR" secondAttribute="bottom" constant="8" id="7nb-JW-YCC"/>
+                            <constraint firstItem="nvO-7W-Q24" firstAttribute="trailing" secondItem="IBT-sS-d1n" secondAttribute="trailingMargin" id="Mw3-Xa-BsO"/>
+                            <constraint firstItem="Xsp-qt-m0W" firstAttribute="trailing" secondItem="IBT-sS-d1n" secondAttribute="trailingMargin" id="Npu-5F-Mn1"/>
+                            <constraint firstItem="FCS-l3-muR" firstAttribute="top" secondItem="WnT-aP-FXP" secondAttribute="bottom" constant="8" id="PVe-56-l3Q"/>
+                            <constraint firstItem="Xsp-qt-m0W" firstAttribute="leading" secondItem="IBT-sS-d1n" secondAttribute="leadingMargin" id="SGV-K2-I68"/>
+                            <constraint firstItem="WnT-aP-FXP" firstAttribute="top" secondItem="nvO-7W-Q24" secondAttribute="bottom" constant="27.5" id="UkO-ux-nU0"/>
+                            <constraint firstItem="WnT-aP-FXP" firstAttribute="trailing" secondItem="IBT-sS-d1n" secondAttribute="trailingMargin" id="iJe-qQ-9iV"/>
+                            <constraint firstItem="FCS-l3-muR" firstAttribute="trailing" secondItem="IBT-sS-d1n" secondAttribute="trailingMargin" id="nWT-cd-7XQ"/>
+                            <constraint firstItem="FCS-l3-muR" firstAttribute="leading" secondItem="IBT-sS-d1n" secondAttribute="leadingMargin" id="oY5-3M-29J"/>
+                            <constraint firstItem="WnT-aP-FXP" firstAttribute="leading" secondItem="IBT-sS-d1n" secondAttribute="leadingMargin" id="sIX-s7-czw"/>
+                            <constraint firstItem="nvO-7W-Q24" firstAttribute="leading" secondItem="IBT-sS-d1n" secondAttribute="leadingMargin" id="t9K-zq-M9q"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="HNx-py-QBc" appends="YES" id="6P7-sw-107"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="addressLabel" destination="WnT-aP-FXP" id="fUL-jK-XFZ"/>
+                        <outlet property="distanceLabel" destination="Xsp-qt-m0W" id="aqe-WO-8qk"/>
+                        <outlet property="hospitalNameLabel" destination="nvO-7W-Q24" id="WRg-km-MI9"/>
+                        <outlet property="phoneLabel" destination="FCS-l3-muR" id="8cG-ow-XFP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ohm-1d-W9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="HNx-py-QBc">
+                    <connections>
+                        <action selector="swipeRightToExit:" destination="H1F-eB-kG1" id="xuK-Zc-w0w"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3837" y="2811"/>
         </scene>
         <!--How To CPR-->
         <scene sceneID="wSn-M1-sH9">
@@ -185,15 +260,15 @@
                                     <constraint firstItem="uHs-wx-IgL" firstAttribute="top" secondItem="ZPD-Fb-Ybg" secondAttribute="bottom" constant="11" id="wqQ-c2-5M0"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OEs-n0-RBe">
-                                <rect key="frame" x="0.0" y="144" width="600" height="436"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OEs-n0-RBe">
+                                <rect key="frame" x="0.0" y="144" width="600" height="407"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AEDInfoCell" rowHeight="67" id="sr6-j5-529" customClass="AEDTableViewCell" customModule="AED" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sr6-j5-529" id="xws-pe-jfg">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="67"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZy-Jl-LWo">
@@ -242,6 +317,7 @@
                         <constraints>
                             <constraint firstItem="sZ2-4M-HAB" firstAttribute="leading" secondItem="EoC-08-v8j" secondAttribute="leading" id="SIx-D1-8gs"/>
                             <constraint firstAttribute="trailing" secondItem="OEs-n0-RBe" secondAttribute="trailing" id="WAZ-33-oeH"/>
+                            <constraint firstItem="oRC-Pr-9ww" firstAttribute="top" secondItem="OEs-n0-RBe" secondAttribute="bottom" id="Wag-1p-SDF"/>
                             <constraint firstItem="OEs-n0-RBe" firstAttribute="width" secondItem="EoC-08-v8j" secondAttribute="width" id="XPB-Vb-pgp"/>
                             <constraint firstAttribute="trailing" secondItem="sZ2-4M-HAB" secondAttribute="trailing" id="YUp-9v-AUn"/>
                             <constraint firstItem="OEs-n0-RBe" firstAttribute="leading" secondItem="EoC-08-v8j" secondAttribute="leading" id="jri-BF-Wkf"/>
@@ -568,24 +644,6 @@
             </objects>
             <point key="canvasLocation" x="-763" y="4370"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="dNQ-ok-Qdh">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xlZ-8k-LlL" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="avw-md-Gdw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="27w-IL-6V5" kind="relationship" relationship="rootViewController" id="22a-eW-8nv"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="l4n-25-Pex" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3619" y="-2128"/>
-        </scene>
         <!--寻找AED-->
         <scene sceneID="ZTi-SO-O4G">
             <objects>
@@ -690,7 +748,6 @@
         <image name="mapIcon" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DBW-jE-Y5Q"/>
         <segue reference="eyt-cN-6MH"/>
     </inferredMetricsTieBreakers>
 </document>

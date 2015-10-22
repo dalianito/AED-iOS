@@ -34,7 +34,6 @@ class BuildingInfoViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Table View
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(building.getAEDs().count)
         return building.getAEDs().count
     }
     
@@ -74,7 +73,6 @@ class BuildingInfoViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func closeCurrentView() {
-        navigationController!.setNavigationBarHidden(true, animated: false)
         navigationController!.popViewControllerAnimated(true)
     }
 }

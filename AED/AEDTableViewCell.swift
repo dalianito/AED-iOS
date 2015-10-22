@@ -18,8 +18,11 @@ class AEDTableViewCell: UITableViewCell {
     
     // MARK: Actions
     func setView() {
-        floorLabel.text = aed.floor
-        
+        if aed.floor.isEmpty {
+            floorLabel.text = "N/A"
+        } else {
+            floorLabel.text = aed.floor
+        }
         specificLocationLabel.frame.size.width = self.frame.width - 100.0
         specificLocationLabel.numberOfLines = 10
         

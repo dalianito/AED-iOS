@@ -1,21 +1,19 @@
 //
-//  BuildingLocationsMapViewController.swift
+//  HospitalsMapViewController.swift
 //  AED
 //
-//  Created by Yang Yu on 10/12/15.
+//  Created by Yang Yu on 10/21/15.
 //  Copyright © 2015 iTO. All rights reserved.
 //
 
 import UIKit
 
-class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, AMapCloudDelegate, UIScrollViewDelegate {
-
+class HospitalsMapViewController: UIViewController, MAMapViewDelegate, AMapCloudDelegate, UIScrollViewDelegate  {
+    
     var cloudAPI : AMapCloudAPI?
     var mapView: ITOMapView?
     var userLastLocationCoordinate2D: CLLocationCoordinate2D?
-    var availableBuildings = [String:BuildingModel]()
-    var sortedBuildingList: [BuildingModel]?
-    let MAX_NO_OF_BUILDINGS_TO_DISPLAY = 3
+    var sortedHospitalList: [HospitalModel]?
     var locationButton: UIButton?
     var uiScrollView: UIScrollView?
     var uiScrollViewCurrentPage: NSInteger?
@@ -25,7 +23,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
     var currentScrollViewPagingIndex = 0
     var forceToRefreshAEDList = false
     
-    let SEARCHING_INDICATOR_MSG = "正在搜索附近\(ConfigurationConstants.AMAP_CLOUD_MAP_SEARCH_RADIUS_IN_METER/1000)公里内可用的AED仪器..."
+    let SEARCHING_INDICATOR_MSG = "正在搜索附近\(ConfigurationConstants.AMAP_CLOUD_MAP_SEARCH_RADIUS_IN_METER/1000)公里内的医院..."
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +45,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         activityIndicatorView.startAnimating()
         alert!.show()
     }
+    
     func initScrollView() {
         let tabBarItemWidth = self.tabBarController!.tabBar.frame.size.width / 5
         let tabBarHeight = self.tabBarController!.tabBar.frame.size.height
@@ -63,13 +62,8 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         self.uiScrollView!.showsVerticalScrollIndicator = false
     }
     
-    func sortBuildingList() {
-        sortedBuildingList = [BuildingModel]()
-        for (_, building) in availableBuildings {
-            sortedBuildingList!.append(building)
-        }
-        
-        sortedBuildingList!.sortInPlace({$0.distance < $1.distance})
+    func sortHospitalList() {
+        sortedHospitalList!.sortInPlace({$0.distance < $1.distance})
     }
     
     func refreshAEDList() {
@@ -82,7 +76,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         let centerPoint =  AMapCloudPoint.locationWithLatitude(CGFloat(latitude), longitude: CGFloat(longitude))
         
         let placeAroundRequest =  AMapCloudPlaceAroundSearchRequest()
-        placeAroundRequest.tableID = ConfigurationConstants.AMAP_CLOUD_MAP_TABLE_ID
+        placeAroundRequest.tableID = ConfigurationConstants.AMAP_CLOUD_MAP_HOSPITAL_TABLE_ID
         placeAroundRequest.radius = ConfigurationConstants.AMAP_CLOUD_MAP_SEARCH_RADIUS_IN_METER
         placeAroundRequest.center = centerPoint
         placeAroundRequest.offset = 20
@@ -100,7 +94,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
             refreshAEDList()
         }
         
-        if (updatingLocation && isNewCoordinate(userLocation.coordinate)) || sortedBuildingList == nil || sortedBuildingList!.isEmpty{
+        if (updatingLocation && isNewCoordinate(userLocation.coordinate)) || sortedHospitalList == nil || sortedHospitalList!.isEmpty{
             refreshAEDList()
         }
     }
@@ -122,7 +116,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         
         return false
     }
-        
+    
     func initMapView() {
         MAMapServices.sharedServices().apiKey = ConfigurationConstants.AMAP_CLOUD_MAP_API_KEY
         mapView = ITOMapView(frame: self.view.frame)
@@ -134,9 +128,6 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         locationButton = UIButton(frame: CGRectMake(10, self.tabBarController!.tabBar.frame.origin.y - 50, 40, 40))
         locationButton!.autoresizingMask = [UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin]
         locationButton!.layer.cornerRadius = 5
-        locationButton!.layer.shadowColor = UIColor.blackColor().CGColor
-        locationButton!.layer.shadowOffset = CGSizeMake(5, 5)
-        locationButton!.layer.shadowRadius = 1
         
         locationButton!.addTarget(self, action: "requestNewUserLocation:", forControlEvents: UIControlEvents.TouchUpInside)
         
@@ -150,7 +141,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         forceToRefreshAEDList = true
         alert!.show()
     }
-
+    
     
     func onCloudPlaceAroundSearchDone(request:AMapCloudPlaceAroundSearchRequest, response:AMapCloudSearchResponse)
     {
@@ -159,44 +150,44 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         }
         self.alert?.dismissWithClickedButtonIndex(0, animated: true)
         isSearching = false
-        updateAvailableBuildings(response.POIs as! [AMapCloudPOI])
+        
+        updateAvailableHospitals(response.POIs as! [AMapCloudPOI])
         self.mapView!.zoomToFitAnnotations((0...response.POIs.count).map{$0})
         updateScrollView()
     }
-
+    
     func cloudRequest(cloudSearchRequest: AnyObject!, error: NSError!) {
         if isSearching == false {
             return
         }
         self.alert?.dismissWithClickedButtonIndex(0, animated: true)
         isSearching = false
-        
         let alert = UIAlertController(title: "", message: "请求失败，请重试！原因：\(error.localizedDescription) 请拨打120急救！", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func mapView(mapView:MAMapView, viewForAnnotation annotation:MAAnnotation) ->MAAnnotationView? {
-
+        
         if annotation.isKindOfClass(CustomAnnotation) {
-            let annotationIdentifier = "aedBuildingIdentifier"
+            let annotationIdentifier = "hospitalIdentifier"
             
-            var poiAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationIdentifier) as? AEDBuildingAnnotationView
+            var poiAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationIdentifier) as? HospitalAnnotationView
             
             if poiAnnotationView == nil {
-                poiAnnotationView = AEDBuildingAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+                poiAnnotationView = HospitalAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
             } else {
                 poiAnnotationView!.setCustomAnnotation(annotation as! CustomAnnotation)
             }
-
+            
             return poiAnnotationView;
         }
         return nil
     }
     
     func mapView(mapView: MAMapView!, didSelectAnnotationView view: MAAnnotationView!) {
-        if view.isKindOfClass(AEDBuildingAnnotationView) {
-            let aedView = view as! AEDBuildingAnnotationView
+        if view.isKindOfClass(HospitalAnnotationView) {
+            let aedView = view as! HospitalAnnotationView
             currentAnnotationIndex = aedView.indexNumber!
             if currentAnnotationIndex == currentScrollViewPagingIndex {
                 return
@@ -207,7 +198,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         }
     }
     
-    func updateAvailableBuildings(pois: [AMapCloudPOI]) {
+    func updateAvailableHospitals(pois: [AMapCloudPOI]) {
         
         if pois.count == 0 {
             let alert = UIAlertController(title: "", message: "无法在附近\(ConfigurationConstants.AMAP_CLOUD_MAP_SEARCH_RADIUS_IN_METER/1000)公里内找到可用的AED。请拨打120急救！", preferredStyle: UIAlertControllerStyle.Alert)
@@ -215,46 +206,34 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
             self.presentViewController(alert, animated: true, completion: nil)
         }
         
-        availableBuildings = [String:BuildingModel]()
-
+        sortedHospitalList = [HospitalModel]()
+        
         for poi in pois {
             let customFields = poi.customFields
-            let buildingID = customFields["buildingID"] as! String
-            var building: BuildingModel
-            if availableBuildings[buildingID] == nil {
-                building = BuildingModel()
-                building.name = poi.name
-                building.address = poi.address
-                building.distance = poi.distance
-                building.coordinate = CLLocationCoordinate2DMake(Double(poi.location.latitude), Double(poi.location.longitude))
-                building.buildingID = buildingID
-                building.phone = customFields["telephone"] as? String
-            } else {
-                building = availableBuildings[buildingID]!
-            }
+               let hospital = HospitalModel()
+                hospital.name = poi.name
+                hospital.address = poi.address
+                hospital.distance = poi.distance
+                hospital.coordinate = CLLocationCoordinate2DMake(Double(poi.location.latitude), Double(poi.location.longitude))
+                hospital.phone = (customFields["telephone"] as? String)!
+
             
-            let aed = AEDModel()
-            aed.floor = customFields["floor"] as? String
-            aed.specificLocation = customFields["location"] as? String
-            aed.directionToFind = customFields["directionToFind"] as? String
-            aed.building = building
-            building.aeds.append(aed)
-            
-            availableBuildings[buildingID] = building
+            sortedHospitalList!.append(hospital)
         }
- 
-        sortBuildingList()
+        
+        sortHospitalList()
+        
         var index = 0
         var firstAnnotation : CustomAnnotation?
         clearMapViewAnnotations(self.mapView!)
-        for building in sortedBuildingList! {
+        for hospital in sortedHospitalList! {
             let annotation = CustomAnnotation()
-            annotation.coordinate = building.coordinate
-            annotation.title = "\(index+1). \(building.name)"
-            annotation.subtitle = "\(building.aeds.count)台(\(building.distance)m)"
-            annotation.customProperties["building"] = building
+            annotation.coordinate = hospital.coordinate!
+            annotation.title = "\(index+1). \(hospital.name)"
+            annotation.subtitle = "\(hospital.distance)m"
+            annotation.customProperties["hospital"] = hospital
             annotation.sequenceNumber = index
-
+            
             mapView!.addAnnotation(annotation)
             
             if index == 0 {
@@ -297,7 +276,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
     func updateScrollView() {
         clearScrollView(self.uiScrollView!)
         let noOfAnnotations = self.mapView!.annotations.count
-
+        
         if noOfAnnotations <= 1 {
             return
         }
@@ -308,9 +287,9 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
             uiView.backgroundColor = UIColor.whiteColor()
             
             let annotation = self.mapView!.annotations[i] as! CustomAnnotation
-            let buildingNameLabel = UILabel(frame: CGRectMake(5, 5, uiView.frame.size.width-50, uiView.frame.size.height/2))
-            buildingNameLabel.text = annotation.title!
-            uiView.addSubview(buildingNameLabel)
+            let hospitalNameLabel = UILabel(frame: CGRectMake(5, 5, uiView.frame.size.width-50, uiView.frame.size.height/2))
+            hospitalNameLabel.text = annotation.title!
+            uiView.addSubview(hospitalNameLabel)
             
             let detailsLabel = UILabel(frame: CGRectMake(20, 10 + uiView.frame.size.height/2, uiView.frame.size.width-50, uiView.frame.size.height/2-15))
             detailsLabel.text = annotation.subtitle!
@@ -323,7 +302,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
             detailsButton.setImage(UIImage(named: "detailsBtn"), forState: UIControlState.Normal)
             detailsButton.tag = i
             detailsButton.addTarget(self, action: "triggerShowDetailsView:", forControlEvents: UIControlEvents.TouchUpInside)
-
+            
             uiView.addSubview(detailsButton)
             
             self.uiScrollView!.addSubview(uiView)
@@ -333,7 +312,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
     }
     
     func triggerShowDetailsView(sender: UIButton) {
-        performSegueWithIdentifier("ShowBuildingInfoSegue", sender: self.mapView!.annotations[sender.tag])
+        performSegueWithIdentifier("ShowHospitalInfoSegue", sender: self.mapView!.annotations[sender.tag])
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -357,11 +336,12 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowBuildingInfoSegue" {
-            let aedDetailViewController = segue.destinationViewController as! BuildingInfoViewController
+        if segue.identifier == "ShowHospitalInfoSegue" {
+            let aedDetailViewController = segue.destinationViewController as! HospitalInfoViewController
             let selectedAnnotation = sender as! CustomAnnotation
-            let building = selectedAnnotation.customProperties["building"]
-            aedDetailViewController.building = building as! BuildingModel
+            let hospital = selectedAnnotation.customProperties["hospital"]
+            aedDetailViewController.hospital = hospital as? HospitalModel
         }
     }
+
 }
