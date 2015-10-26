@@ -29,6 +29,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.automaticallyAdjustsScrollViewInsets = false
         self.cloudAPI = AMapCloudAPI(cloudKey:ConfigurationConstants.AMAP_CLOUD_MAP_API_KEY, delegate:nil)
         self.cloudAPI?.delegate = self;
         initMapView()
@@ -50,13 +51,11 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
     func initScrollView() {
         let tabBarItemWidth = self.tabBarController!.tabBar.frame.size.width / 5
         let tabBarHeight = self.tabBarController!.tabBar.frame.size.height
-        let tabBarLocY = self.tabBarController!.tabBar.frame.origin.y
-        self.uiScrollView = UIScrollView(frame: CGRect(origin: CGPointMake(tabBarItemWidth, tabBarLocY - tabBarHeight-10), size:CGSizeMake(tabBarItemWidth*3, tabBarHeight)))
+        self.uiScrollView = UIScrollView(frame: CGRectMake(tabBarItemWidth, self.tabBarController!.tabBar.frame.origin.y - tabBarHeight*2 - 20, tabBarItemWidth*3, tabBarHeight))
         self.uiScrollView!.delegate = self
         
         self.view.addSubview(self.uiScrollView!)
         
-        self.automaticallyAdjustsScrollViewInsets = false
         self.uiScrollView!.bounces = false
         self.uiScrollView!.pagingEnabled = true
         self.uiScrollView!.showsHorizontalScrollIndicator = false
@@ -131,7 +130,7 @@ class BuildingLocationsMapViewController: UIViewController, MAMapViewDelegate, A
         
         userLastLocationCoordinate2D = nil
         
-        locationButton = UIButton(frame: CGRectMake(10, self.tabBarController!.tabBar.frame.origin.y - 50, 40, 40))
+        locationButton = UIButton(frame: CGRectMake(10, self.tabBarController!.tabBar.frame.origin.y - 10, 40, 40))
         locationButton!.autoresizingMask = [UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin]
         locationButton!.layer.cornerRadius = 5
         locationButton!.layer.shadowColor = UIColor.blackColor().CGColor

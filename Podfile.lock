@@ -2,15 +2,18 @@ PODS:
   - AMap3DMap (3.1.0.1)
   - AMapCloudMap (1.2.0)
   - Bugly (1.4.0)
+  - Reveal-iOS-SDK (1.6.1)
 
 DEPENDENCIES:
   - AMap3DMap (~> 3.1.0.1)
   - AMapCloudMap
   - Bugly
+  - Reveal-iOS-SDK
 
 SPEC CHECKSUMS:
   AMap3DMap: 58f27323368dd0e351cc3c823a77ba389da294fc
   AMapCloudMap: dce3eb6d6a861fc90ac9c15ffdfa4b4301057d2a
   Bugly: 682e56dcc62633635e22d75d0968fa5a372bfce3
+  Reveal-iOS-SDK: ceae964076cebe3efe63e5e9abe3152efce46aa8
 
 COCOAPODS: 0.39.0

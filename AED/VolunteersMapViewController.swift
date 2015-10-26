@@ -28,7 +28,7 @@ class VolunteersMapViewController: UIViewController, MAMapViewDelegate, AMapClou
         self.view.addSubview(mapView!)
         
         
-        locationButton = UIButton(frame: CGRectMake(10, self.tabBarController!.tabBar.frame.origin.y - 50, 40, 40))
+        locationButton = UIButton(frame: CGRectMake(10, self.tabBarController!.tabBar.frame.origin.y - 10, 40, 40))
         locationButton!.autoresizingMask = [UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin]
         locationButton!.layer.cornerRadius = 10
         
@@ -40,7 +40,7 @@ class VolunteersMapViewController: UIViewController, MAMapViewDelegate, AMapClou
     }
     
     func initCallForHelpButton() {
-        callForHelpButton = UIButton(frame: CGRectMake(80, self.tabBarController!.tabBar.frame.origin.y - 60, self.view.frame.size.width - 80*2, 50))
+        callForHelpButton = UIButton(frame: CGRectMake(80, self.tabBarController!.tabBar.frame.origin.y - 10, self.view.frame.size.width - 80*2, 50))
         callForHelpButton!.autoresizingMask = [UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin]
         callForHelpButton!.layer.cornerRadius = 10
         callForHelpButton!.setTitle("呼叫志愿者", forState: UIControlState.Normal)

@@ -13,17 +13,17 @@ class CPRDirectionViewController: UIViewController {
     
     // MARK: Properties
     
-    var webView: WKWebView?
+    //var webView: UIWebView?
+    @IBOutlet weak var webView: UIWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets = true
         loadCPRDirectionLocally()
     }
     
     func loadCPRDirectionLocally() {
-        webView = WKWebView(frame: CGRectMake(0, self.navigationController!.navigationBar.frame.height, self.view.frame.width, self.view.frame.height - self.navigationController!.navigationBar.frame.height - self.tabBarController!.tabBar.frame.height))
-        
         let filePath = NSBundle.mainBundle().pathForResource("HowToCPR", ofType: "html")
         let url = NSURL(fileURLWithPath: filePath!)
         let request = NSURLRequest(URL: url)
