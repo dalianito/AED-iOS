@@ -25,10 +25,6 @@ class CPRDirectionViewController: UIViewController {
     
     func loadCPRDirectionLocally() {
         let filePath = NSBundle.mainBundle().pathForResource("HowToCPR", ofType: "html")
-        
-        let tmpFilePath = NSBundle.mainBundle().pathForResource("blowani", ofType: "gif")
-        print(tmpFilePath)
-        print(filePath)
         let url = NSURL(fileURLWithPath: filePath!)
         let request = NSURLRequest(URL: url)
     
