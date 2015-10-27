@@ -13,7 +13,6 @@ class CPRDirectionViewController: UIViewController {
     
     // MARK: Properties
     
-    //var webView: UIWebView?
     @IBOutlet weak var webView: UIWebView!
     
     override func viewDidLoad() {

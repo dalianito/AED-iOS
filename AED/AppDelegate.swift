@@ -15,8 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        //CrashReporter.sharedInstance().enableLog(true)
-        //CrashReporter.sharedInstance().installWithAppId("cn.com.ito.AED")
+        CrashReporter.sharedInstance().enableLog(true)
+        CrashReporter.sharedInstance().installWithAppId("cn.com.ito.AED")
         return true
     }
     
